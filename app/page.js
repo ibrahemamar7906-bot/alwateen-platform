@@ -306,6 +306,29 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Official Platform Poster Showcase */}
+      <section style={{ maxWidth: '1140px', margin: '35px auto 40px', padding: '0 20px', position: 'relative', zIndex: 10 }}>
+        <div style={{
+          position: 'relative',
+          borderRadius: '24px',
+          overflow: 'hidden',
+          boxShadow: '0 20px 50px -10px rgba(26, 46, 134, 0.28), 0 0 0 2px rgba(222, 162, 74, 0.35)',
+          background: 'linear-gradient(135deg, #1A2E86 0%, #0F1D5C 100%)'
+        }}>
+          <img 
+            src="/poster.jpg" 
+            alt="منصة الوتين التعليمية - المستر إبراهيم عمار | تعلّم بذكاء.. تميّز بجدارة" 
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              aspectRatio: '16/9',
+              objectFit: 'cover'
+            }} 
+          />
+        </div>
+      </section>
+
       {/* About Teacher Section */}
       <section className={styles.aboutTeacherSection}>
         <div className={styles.aboutTeacherContainer}>

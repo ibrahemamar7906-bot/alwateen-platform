@@ -47,10 +47,10 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/logo.png',
-        width: 800,
-        height: 600,
-        alt: 'شعار منصة الوتين التعليمية - المستر إبراهيم عمار',
+        url: '/poster.jpg',
+        width: 1200,
+        height: 675,
+        alt: 'بوستر منصة الوتين التعليمية - المستر إبراهيم عمار | تعلّم بذكاء.. تميّز بجدارة',
       }
     ],
   },
@@ -58,7 +58,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'منصة الوتين التعليمية | المستر إبراهيم عمار',
     description: 'فصول لايف، سبورة تفاعلية ذكية، وأقوى شرح للغة العربية عام وأزهر في أشمون والمنوفية.',
-    images: ['/logo.png'],
+    images: ['/poster.jpg'],
   },
   robots: {
     index: true,
