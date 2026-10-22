@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 // Smart phonetic enhancement for common words that TTS engines mispronounce if untashkeeled
 const PHONETIC_MAP = [
