@@ -1,6 +1,6 @@
-﻿'use client'
+'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '../../../utils/supabase'
 import { pathways } from './data'
@@ -39,7 +39,7 @@ const SUBJECT_LABELS = {
   math_en: 'Math Pathway 🔢',
 }
 
-export default function PathwayMap() {
+function PathwayMapContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const subject = searchParams.get('subject') || 'arabic'
@@ -1397,5 +1397,13 @@ export default function PathwayMap() {
         badgeName={subject === 'english' ? 'Star Explorer 🌟' : subject.startsWith('math') ? 'بطل الحساب والأرقام 🔢' : 'فارس الحروف والكلمات 👑'}
       />
     </div>
+  )
+}
+
+export default function PathwayMap() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>جاري التحميل...</div>}>
+      <PathwayMapContent />
+    </Suspense>
   )
 }

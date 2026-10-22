@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Sparkles } from 'lucide-react'
 import { getInfinitePuzzleLevel } from '../../utils/infiniteGameGenerator'
 import { loadCustomGameWords, formatCustomWordToPuzzleLevel } from '../../utils/customGameStore'
 import TeacherGameManagerModal from '../../components/TeacherGameManagerModal'
 
-export default function WordPuzzle() {
+function WordPuzzleContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const subject = searchParams.get('subject') || 'arabic'
@@ -320,5 +320,13 @@ export default function WordPuzzle() {
         `}</style>
       </div>
     </div>
+  )
+}
+
+export default function WordPuzzle() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>جاري التحميل...</div>}>
+      <WordPuzzleContent />
+    </Suspense>
   )
 }
