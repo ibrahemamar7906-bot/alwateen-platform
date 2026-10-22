@@ -693,7 +693,6 @@ export default function AudioOutputSelector({ isDark = true }) {
                 <strong>🛡️ ميزة الحفاظ على علو الصوت (Anti-Ducking):</strong> المنصة تقوم تلقائياً بتعويض وتضخيم صوت الطرف الآخر بنسبة 45% عند فتح المايك لمنع انخفاض الصوت المعتاد في الويندوز والمتصفحات!
               </div>
             </div>
-            </div>
 
             {/* ── SECTION 3: SPEAKERS / OUTPUT SELECTION ── */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
