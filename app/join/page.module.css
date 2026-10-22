@@ -1,0 +1,199 @@
+.container {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+}
+
+.joinScreen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.joinCard {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #1e293b;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  color: #64748b;
+  margin: 0 0 30px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-family: inherit;
+  outline: none;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  color: #ef4444;
+  background: #fee2e2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Live View */
+.liveScreen {
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+}
+
+.liveHeader {
+  background: #1e293b;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  color: white;
+}
+
+.studentName {
+  background: #334155;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.mainArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  perspective: 1000px;
+}
+
+.flashcardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcardInner {
+  transform: rotateX(180deg);
+}
+
+.flashcardFront, .flashcardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.flashcardFront {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: 4px solid #60a5fa;
+}
+
+.flashcardBack {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: 4px solid #34d399;
+  transform: rotateX(180deg);
+}
+
+.waitingBox {
+  text-align: center;
+  color: #94a3b8;
+}
+
+.loader {
+  border: 4px solid rgba(255,255,255,0.1);
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

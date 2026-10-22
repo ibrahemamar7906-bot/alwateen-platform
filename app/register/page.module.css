@@ -1,0 +1,421 @@
+﻿/* ═════════════════════════════════════════════
+   منصة الوتين - Register Page Styles (Premium SaaS)
+═════════════════════════════════════════════ */
+
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(26, 46, 134, 0.70), rgba(5, 30, 20, 0.90)), url('/bg-students.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 30px 16px;
+  font-family: 'Tajawal', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern & Glows */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(#2042AD 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.glow1 {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.formCard, .successCard {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: clamp(32px, 5vw, 48px);
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.15), 0 0 0 1px rgba(5, 150, 105, 0.05);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.formCard:hover, .successCard:hover {
+  transform: translateY(-4px);
+}
+
+.backHome, .backStepBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2042AD;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(5, 150, 105, 0.06);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+.backHome:hover, .backStepBtn:hover {
+  background: rgba(5, 150, 105, 0.12);
+  transform: translateX(4px);
+}
+
+.logoContainer {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logoWrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 22px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(5, 150, 105, 0.15);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.12);
+}
+
+.title {
+  text-align: center;
+  color: #064e3b;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+/* New Role Selection Cards for Step 1 */
+.roleSelectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.roleCardBig {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: right;
+  width: 100%;
+}
+
+.roleCardBig:hover {
+  background: #ffffff;
+  border-color: #2042AD;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.12);
+}
+
+.roleCardIcon {
+  background: #ecfdf5;
+  color: #2042AD;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.roleCardContent {
+  flex: 1;
+}
+
+.roleCardTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+.roleCardDesc {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.errorAlert {
+  background-color: #fef2f2;
+  color: #ef4444;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  color: #334155;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 16px;
+  color: #2042AD;
+  opacity: 0.7;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.inputWrapper input[dir="ltr"] {
+  padding-right: 44px;
+  padding-left: 16px;
+}
+
+.inputWrapper input:focus {
+  outline: none;
+  border-color: #2042AD;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+.togglePassBtn {
+  position: absolute;
+  left: 14px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.togglePassBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.gradeSelect {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  appearance: none;
+}
+.gradeSelect:focus {
+  outline: none;
+  border-color: #2042AD;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+/* Premium Primary Button with Shine Effect */
+.submitBtn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #2042AD, #10b981);
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  animation: none;
+}
+.submitBtn:disabled::after {
+  display: none;
+}
+
+.footerText {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.footerText a {
+  color: #2042AD;
+  font-weight: 800;
+  text-decoration: none;
+  margin-right: 6px;
+  transition: color 0.2s;
+}
+.footerText a:hover {
+  color: #1A358A;
+  text-decoration: underline;
+}
+
+.successIcon {
+  width: 90px;
+  height: 90px;
+  background: #ecfdf5;
+  color: #2042AD;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.15);
+}
+
+.successCard h2 {
+  text-align: center;
+  color: #064e3b;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.successCard p {
+  text-align: center;
+  color: #475569;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.whatsappNote {
+  background: #ecfdf5;
+  border: 1px dashed #2042AD;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.whatsappBtn {
+  margin-top: 16px;
+  background: #25D366;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.whatsappBtn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+}

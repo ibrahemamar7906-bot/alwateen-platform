@@ -1,0 +1,150 @@
+﻿.bottomBarContainer {
+  height: 80px;
+  background-color: #0f172a;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 100;
+  direction: rtl;
+}
+
+.bottomBarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.leftGroup, .centerGroup, .rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.centerGroup {
+  justify-content: center;
+  flex: 1;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.actionBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+}
+
+.activeBtn {
+  color: #10b981;
+}
+
+.primaryBtn {
+  color: #8b5cf6;
+}
+
+.dangerBtn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+.dangerBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.leaveBtn {
+  background: #ef4444;
+  color: white;
+}
+.leaveBtn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.btnLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.iconWrapper {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 2px solid #0f172a;
+}
+
+.reactWrapper {
+  position: relative;
+}
+
+.reactMenu {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  z-index: 200;
+}
+
+.emojiBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+.emojiBtn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .btnLabel {
+    display: none;
+  }
+  .leftGroup, .centerGroup, .rightGroup {
+    gap: 4px;
+  }
+  .actionBtn {
+    padding: 10px;
+  }
+  .bottomBarContainer {
+    height: 60px;
+    padding: 0 10px;
+  }
+}

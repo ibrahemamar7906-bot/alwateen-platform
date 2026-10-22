@@ -1,0 +1,577 @@
+﻿.dashboard {
+  display: flex;
+  min-height: 100dvh; /* dvh for mobile browser chrome */
+  background: transparent;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-left: 1px solid rgba(255, 255, 255, 0.8); /* RTL: left border */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(255,255,255,0.5), var(--neon-glow);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.userInfo {
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 2px dashed #f1f5f9;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 auto 15px;
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+  flex-shrink: 0;
+}
+
+.userInfo h3 {
+  color: var(--primary-dark);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  word-break: break-word;
+}
+
+.userInfo p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ── NAV ── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  flex: 1;
+}
+
+.nav a {
+  padding: 15px 25px;
+  color: #555;
+  font-weight: bold;
+  border-right: 4px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav a:hover, .nav a.active {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--primary-color);
+  border-right-color: var(--primary-color);
+  border-radius: 12px;
+  margin: 0 10px;
+  padding-right: 15px;
+  box-shadow: 0 4px 15px rgba(52, 211, 153, 0.2), inset 0 0 10px rgba(255,255,255,0.8);
+  text-shadow: var(--neon-text-glow);
+}
+
+.logoutBtn {
+  margin-top: auto;
+  color: #d32f2f !important;
+}
+
+.logoutBtn:hover {
+  background-color: rgba(211, 47, 47, 0.05) !important;
+  border-right-color: #d32f2f !important;
+}
+
+/* ── MAIN CONTENT ── */
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 0; /* Prevent flex child overflow */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── HEADER ── */
+.header {
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05), var(--neon-glow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.header h1 {
+  color: #1e293b;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 5px;
+  font-weight: 900;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.header p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* ── CONTENT GRID ── */
+.contentGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+}
+
+/* ── COURSES / GRADES ── */
+.coursesSection h2, .gradesSection h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-shadow: var(--neon-text-glow);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* ── SEARCH TRIGGER BUTTON ── */
+.searchTriggerBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(5, 150, 105, 0.25);
+  border-radius: 18px;
+  padding: 8px 16px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.searchTriggerBtn:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.15);
+  transform: translateY(-2px);
+  color: #0f172a;
+}
+
+.searchTriggerText {
+  white-space: nowrap;
+}
+
+.searchShortcutKbd {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.mobileSearchBanner {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.courseCard {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  padding: 25px !important;
+  border-radius: 25px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 2px 10px rgba(255,255,255,0.8) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+}
+
+@media (hover: hover) {
+  .courseCard:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 2px 10px rgba(255,255,255,1), var(--neon-glow-hover) !important;
+    border-color: rgba(52, 211, 153, 0.5) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+}
+
+.toolCard {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px !important;
+  padding: 20px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+.toolCard:hover {
+  transform: translateY(-5px) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.courseCard h3 {
+  color: #1e293b;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.courseCard p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.progressBar {
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progressText {
+  display: block;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.resumeBtn {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  padding: 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #2563eb, 0 8px 15px rgba(59, 130, 246, 0.3);
+}
+
+@media (hover: hover) {
+  .resumeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #2563eb, 0 12px 20px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.resumeBtn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.gradesSection {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 0 15px rgba(255,255,255,0.4);
+  height: fit-content;
+  transition: all 0.3s ease;
+}
+
+.gradesSection:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), var(--neon-glow);
+}
+
+.gradesList {
+  list-style: none;
+}
+
+.gradesList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
+}
+
+.gradesList li:last-child {
+  border-bottom: none;
+}
+
+.quizName {
+  font-weight: bold;
+  color: #444;
+  flex: 1;
+  word-break: break-word;
+}
+
+.score {
+  color: var(--primary-color);
+  font-weight: bold;
+  background-color: rgba(5, 150, 105, 0.1);
+  padding: 2px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.cardHeader h3 {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.freeBadge {
+  background-color: #10b981;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.premiumBadge {
+  background-color: #f59e0b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lockedCard {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  opacity: 0.8;
+}
+
+.subscribeBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.subscribeBtn:hover {
+  background-color: #fef3c7;
+}
+
+/* ── MOBILE SIDEBAR CONTROLS ── */
+.sidebarHeader {
+  display: none;
+  padding: 15px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.closeMenuBtn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.hamburgerBtn {
+  display: none;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+
+.hamburgerBtn:active {
+  transform: scale(0.96);
+}
+
+.mobileOverlay {
+  display: none;
+}
+
+/* ========================
+   BREAKPOINTS
+   ======================== */
+
+/* Tablet: stack the two-column grid */
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: drawer sidebar, reduced padding */
+@media (max-width: 768px) {
+  /* Show hamburger, hide inline sidebar */
+  .hamburgerBtn {
+    display: inline-flex;
+  }
+
+  /* Full-screen drawer from right (RTL) */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(105%);
+    width: min(300px, 88vw);
+    height: 100dvh;
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Account for notch on iPhones */
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .sidebarHeader {
+    display: flex;
+  }
+
+  /* Dark overlay behind open drawer */
+  .mobileOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+  }
+
+  /* Reduce main content padding */
+  .mainContent {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 16px 20px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+  }
+
+  .header p {
+    font-size: 0.95rem;
+  }
+
+  /* Stack cards to single column */
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mobileSearchBanner {
+    display: block;
+  }
+
+  .searchTriggerBtn {
+    padding: 8px 12px;
+  }
+
+  .searchShortcutKbd {
+    display: none;
+  }
+
+  .gradesSection {
+    padding: 20px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .mainContent {
+    padding: 12px;
+  }
+
+  .userInfo {
+    padding: 25px 15px;
+  }
+
+  .avatar {
+    width: 65px;
+    height: 65px;
+    font-size: 1.6rem;
+  }
+}
+
+.toolCard:hover { transform: translateY(-5px); }
+
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce expensive backdrop-filters on mobile */
+  .sidebar, .glassCard, .header, .glassCardActive, .mobileMenuOverlay {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(255, 255, 255, 0.95) !important; /* Make slightly more opaque since blur is reduced */
+  }
+}

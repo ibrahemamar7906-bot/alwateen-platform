@@ -1,0 +1,648 @@
+/* ══════════════════════════════════════════════════════
+   AUDIO RECORDER & MICROPHONE STUDIO (Admin Dashboard)
+   ══════════════════════════════════════════════════════ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.3s ease-in-out;
+  direction: rtl;
+  font-family: inherit;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HEADER BANNER ── */
+.headerCard {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+  color: #ffffff;
+  padding: 24px 28px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 10px 25px -5px rgba(6, 78, 59, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.headerInfo h2 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerInfo p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #a7f3d0;
+  line-height: 1.5;
+}
+
+.headerBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badgePill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── DEVICE SELECTOR CARD ── */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.cardSubtitle {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin: 4px 0 0 0;
+}
+
+.micSelectWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.selectGroup {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.micSelect {
+  width: 100%;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.micSelect:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+.micActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  flex-shrink: 0;
+}
+
+.btnTestMic {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1.5px solid #a7f3d0;
+}
+
+.btnTestMic:hover {
+  background: #d1fae5;
+  transform: translateY(-1px);
+}
+
+.btnTestingActive {
+  background: #059669;
+  color: white;
+  border: 1.5px solid #047857;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+}
+
+.btnRefresh {
+  background: #f8fafc;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+}
+
+.btnRefresh:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* ── LIVE AUDIO VU METER ── */
+.meterContainer {
+  margin-top: 18px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+
+.meterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.meterBarBg {
+  width: 100%;
+  height: 16px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.meterBarFill {
+  height: 100%;
+  transition: width 0.08s ease;
+  background: linear-gradient(90deg, #10b981 0%, #10b981 65%, #f59e0b 85%, #ef4444 100%);
+  border-radius: 10px;
+}
+
+.meterHints {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* ── RECORDING STUDIO CONSOLE ── */
+.studioConsole {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.recordingActiveBg {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.12), 0 12px 36px rgba(239, 68, 68, 0.1) !important;
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.92rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.statusIdle {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.statusRecording {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+  animation: pulseRecording 1.4s infinite;
+}
+
+.statusPaused {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1.5px solid #fde68a;
+}
+
+@keyframes pulseRecording {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.pulsingDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dc2626;
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+.timerDisplay {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: monospace;
+  color: #0f172a;
+  letter-spacing: 2px;
+  margin: 4px 0 16px;
+  line-height: 1;
+}
+
+.timerRecording {
+  color: #dc2626;
+}
+
+.waveformCanvas {
+  width: 100%;
+  max-width: 600px;
+  height: 80px;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.recordMainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 18px;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btnStartRecord {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+}
+
+.btnStartRecord:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.45);
+}
+
+.btnStopRecord {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
+}
+
+.btnStopRecord:hover {
+  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+  transform: translateY(-2px);
+}
+
+.btnSecondaryControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+}
+
+.btnSecondaryControl:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.btnCancelRecord {
+  color: #dc2626;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.btnCancelRecord:hover {
+  background: #fee2e2;
+  border-color: #f87171;
+}
+
+/* ── AUDIO SETTINGS TOGGLES ── */
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.toggleItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toggleItem:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.toggleLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggleTitle {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.toggleDesc {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.toggleSwitch {
+  width: 44px;
+  height: 24px;
+  background: #cbd5e1;
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggleActive {
+  background: #059669 !important;
+}
+
+.toggleKnob {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.toggleActive .toggleKnob {
+  transform: translateX(-20px);
+}
+
+/* ── SAVED RECORDINGS LIST ── */
+.recordingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.recordingItem {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.recordingItem:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+
+.recordingInfo {
+  flex: 1;
+  min-width: 260px;
+}
+
+.recordingTitleInput {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  transition: all 0.2s ease;
+}
+
+.recordingTitleInput:focus {
+  background: #f8fafc;
+  border-color: #059669;
+  outline: none;
+}
+
+.recordingMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.metaBadge {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.recordingPlayer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recordingAudio {
+  height: 38px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  text-decoration: none;
+}
+
+.downloadBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+}
+
+.deleteBtn {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.deleteBtn:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+}
+
+.emptyIcon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+/* ── TIPS CARD ── */
+.tipsCard {
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 18px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tipsIcon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.tipsContent h4 {
+  margin: 0 0 4px 0;
+  color: #1e40af;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.tipsContent p {
+  margin: 0;
+  color: #3b82f6;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .headerCard { padding: 18px 20px; }
+  .timerDisplay { font-size: 2.5rem; }
+  .recordMainBtn { width: 100%; justify-content: center; }
+  .controlsRow { width: 100%; }
+  .btnSecondaryControl { flex: 1; justify-content: center; }
+  .recordingItem { flex-direction: column; align-items: stretch; }
+  .recordingPlayer { flex-direction: column; width: 100%; }
+  .recordingAudio { width: 100%; }
+  .downloadBtn { width: 100%; justify-content: center; }
+}

@@ -1,0 +1,188 @@
+  return (
+    <div className={styles.container}>
+      {/* Canvas Area */}
+      <div className={`${styles.canvasWrapper} ${styles[bgType]}`}>
+        <canvas ref={canvasRef} className={styles.canvas} />
+      </div>
+
+      {/* Left Toolbar: Core Tools */}
+      <div className={`${styles.glassPanel} ${styles.leftToolbar}`}>
+         <button className={`${styles.toolBtn} ${tool === 'select' ? styles.activeTool : ''}`} onClick={() => setTool('select')}><MousePointer2 size={20} /><span className={styles.tooltip}>تحديد</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'pan' ? styles.activeTool : ''}`} onClick={() => setTool('pan')}><Hand size={20} /><span className={styles.tooltip}>تحريك</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'pen' ? styles.activeTool : ''}`} onClick={() => setTool('pen')}><Pen size={20} /><span className={styles.tooltip}>قلم</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'highlighter' ? styles.activeTool : ''}`} onClick={() => setTool('highlighter')}><Highlighter size={20} /><span className={styles.tooltip}>تمييز</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'laser' ? styles.activeTool : ''}`} onClick={() => setTool('laser')}><Laser size={20} /><span className={styles.tooltip}>ليزر</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'magic' ? styles.activeTool : ''}`} onClick={() => setTool('magic')}><Sparkles size={20} /><span className={styles.tooltip}>ذكي</span></button>
+         <button className={`${styles.toolBtn} ${tool === 'eraser' ? styles.activeTool : ''}`} onClick={() => setTool('eraser')}><Eraser size={20} /><span className={styles.tooltip}>ممحاة</span></button>
+      </div>
+
+      {/* Bottom Toolbar: Insertion */}
+      <div className={`${styles.glassPanel} ${styles.bottomToolbar}`}>
+         <button className={styles.toolBtn} onClick={() => setIsLibraryOpen(!isLibraryOpen)}><StickyNote size={20} /><span className={styles.tooltip}>المكتبة</span></button>
+         <button className={styles.toolBtn} onClick={addText}><Type size={20} /><span className={styles.tooltip}>نص</span></button>
+         <button className={styles.toolBtn} onClick={addRect}><Square size={20} /><span className={styles.tooltip}>مربع</span></button>
+         <button className={styles.toolBtn} onClick={addCircle}><Circle size={20} /><span className={styles.tooltip}>دائرة</span></button>
+         <button className={styles.toolBtn} onClick={addTriangle}><Triangle size={20} /><span className={styles.tooltip}>مثلث</span></button>
+         <button className={styles.toolBtn} onClick={addLine}><Minus size={20} /><span className={styles.tooltip}>خط</span></button>
+         <button className={styles.toolBtn} onClick={addArrow}><ArrowRight size={20} /><span className={styles.tooltip}>سهم</span></button>
+         
+         <div style={{ width: '1px', height: '24px', background: '#cbd5e1', margin: '0 8px' }} />
+         
+         <label className={styles.toolBtn}>
+            <ImageIcon size={20} /><span className={styles.tooltip}>صورة</span>
+            <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload} />
+         </label>
+         <label className={styles.toolBtn}>
+            <Video size={20} /><span className={styles.tooltip}>فيديو</span>
+            <input type="file" accept="video/*" style={{ display: 'none' }} onChange={handleVideoUpload} />
+         </label>
+      </div>
+
+      {/* Top Left Toolbar: Pages & Save */}
+      <div className={`${styles.glassPanel} ${styles.topLeftToolbar}`}>
+         <a href="/teacher-assistant" className={styles.toolBtn} style={{ color: '#ef4444' }}><X size={20} /><span className={styles.tooltip}>خروج</span></a>
+         
+         <div style={{ width: '1px', height: '24px', background: '#cbd5e1', margin: '0 8px', alignSelf: 'center' }} />
+         <button className={styles.toolBtn} onClick={() => switchPage(currentPageIndex - 1)} disabled={currentPageIndex === 0}><ChevronRight size={20}/></button>
+         <span style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: '14px', margin: '0 5px' }}>{currentPageIndex + 1} / {pages.length}</span>
+         <button className={styles.toolBtn} onClick={() => switchPage(currentPageIndex + 1)} disabled={currentPageIndex === pages.length - 1}><ChevronLeft size={20}/></button>
+         <button className={styles.toolBtn} onClick={addPage} style={{ color: '#2563eb' }}>➕<span className={styles.tooltip}>صفحة جديدة</span></button>
+
+         <div style={{ width: '1px', height: '24px', background: '#cbd5e1', margin: '0 8px', alignSelf: 'center' }} />
+         <button className={styles.toolBtn} onClick={undo} disabled={!canUndo} style={{ opacity: canUndo ? 1 : 0.5 }}><Undo2 size={20} /><span className={styles.tooltip}>تراجع</span></button>
+         <button className={styles.toolBtn} onClick={redo} disabled={!canRedo} style={{ opacity: canRedo ? 1 : 0.5 }}><Redo2 size={20} /><span className={styles.tooltip}>إعادة</span></button>
+         
+         <div style={{ width: '1px', height: '24px', background: '#cbd5e1', margin: '0 8px', alignSelf: 'center' }} />
+         <button className={styles.toolBtn} onClick={saveProject}><Download size={20} /><span className={styles.tooltip}>حفظ JSON</span></button>
+         <label className={styles.toolBtn}>
+            <FolderOpen size={20} /><span className={styles.tooltip}>فتح JSON</span>
+            <input type="file" accept=".json" style={{ display: 'none' }} onChange={loadProject} />
+         </label>
+      </div>
+
+      {/* Top Right Toolbar: Properties */}
+      <div className={`${styles.glassPanel} ${styles.topRightToolbar}`}>
+         <div className={styles.colorsGroup} style={{ justifyContent: 'center' }}>
+            {colors.map(c => (
+              <button key={c.hex} className={`${styles.colorBtn} ${color === c.hex ? styles.activeColor : ''}`} style={{ backgroundColor: c.hex }} onClick={() => setColor(c.hex)} title={c.name} />
+            ))}
+         </div>
+         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '12px', color: '#64748b' }}>السمك:</span>
+            <input type="range" min="1" max="30" value={lineWidth} onChange={(e) => setLineWidth(Number(e.target.value))} className={styles.rangeInput} />
+         </div>
+         
+         <div style={{ display: 'flex', gap: '5px' }}>
+             <button onClick={() => {if(canvas) canvas.clear()}} className={styles.actionBtn} style={{ background: '#fee2e2', color: '#ef4444', flex: 1, padding: '5px' }}><Trash2 size={16} /> مسح</button>
+             <button className={styles.actionBtn} onClick={() => setIsSettingsOpen(!isSettingsOpen)} style={{ flex: 1, padding: '5px' }}><Settings2 size={16} /> إعدادات</button>
+         </div>
+         
+         {isSettingsOpen && (
+            <div style={{ marginTop: '5px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+               <select className={styles.selectInput} value={bgType} onChange={(e) => setBgType(e.target.value)}>
+                 <option value="blank">خلفية سادة (بيضاء)</option>
+                 <option value="ruled">خلفية مسطرة (لغة عربية)</option>
+                 <option value="grid">مربعات (رياضيات)</option>
+               </select>
+               <label className={styles.actionBtn} style={{ background: '#e0e7ff', color: '#3730a3', cursor: 'pointer', textAlign: 'center', padding: '8px' }}>
+                 صورة/PDF كخلفية
+                 <input type="file" accept="image/*,.pdf" style={{ display: 'none' }} onChange={handleBackgroundUpload} />
+               </label>
+            </div>
+         )}
+      </div>
+
+      {/* Library Panel (Pop-up) */}
+      {isLibraryOpen && (
+        <div className={styles.libraryPanel}>
+           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
+              <h4 style={{ margin: 0, color: '#334155' }}>المكتبة الشاملة</h4>
+              <button onClick={() => setIsLibraryOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><X size={20} color="#94a3b8" /></button>
+           </div>
+           
+           <div className={styles.librarySection}>
+             <h5>📝 ملاحظات لاصقة</h5>
+             <div className={styles.libraryGrid}>
+                <div className={styles.stickyNoteItem} style={{ background: '#fef08a' }} onClick={() => addStickyNote('#fef08a')} title="أصفر"></div>
+                <div className={styles.stickyNoteItem} style={{ background: '#a7f3d0' }} onClick={() => addStickyNote('#a7f3d0')} title="أخضر"></div>
+                <div className={styles.stickyNoteItem} style={{ background: '#bfdbfe' }} onClick={() => addStickyNote('#bfdbfe')} title="أزرق"></div>
+                <div className={styles.stickyNoteItem} style={{ background: '#fbcfe8' }} onClick={() => addStickyNote('#fbcfe8')} title="وردي"></div>
+             </div>
+           </div>
+
+           <div className={styles.librarySection}>
+             <h5>🎓 تعليم وعلوم</h5>
+             <div className={styles.libraryGrid}>
+                <button className={styles.libraryItem} onClick={addMicroscope} title="ميكروسكوب">🔬<span>علوم</span></button>
+                <button className={styles.libraryItem} onClick={addFlask} title="دورق">🧪<span>كيمياء</span></button>
+                <button className={styles.libraryItem} onClick={addBook} title="كتاب">📚<span>قراءة</span></button>
+                <button className={styles.libraryItem} onClick={addGradCap} title="تخرج">🎓<span>نجاح</span></button>
+             </div>
+           </div>
+           
+           <div className={styles.librarySection}>
+             <h5>📐 رياضيات وأدوات</h5>
+             <div className={styles.libraryGrid}>
+                <button className={styles.libraryItem} onClick={() => { addRuler(); setIsLibraryOpen(false); }} title="مسطرة">📏<span>مسطرة</span></button>
+                <button className={styles.libraryItem} onClick={() => { addProtractor(); setIsLibraryOpen(false); }} title="منقلة">📐<span>منقلة</span></button>
+                <button className={styles.libraryItem} onClick={() => { setTool('compass'); setIsLibraryOpen(false); }} title="برجل">⭕<span>برجل</span></button>
+                <button className={styles.libraryItem} onClick={() => { addAxes(); setIsLibraryOpen(false); }} title="محاور">📈<span>محاور</span></button>
+             </div>
+           </div>
+           
+           <div className={styles.librarySection}>
+             <h5>⭐ ملصقات تفاعلية</h5>
+             <div className={styles.libraryGrid}>
+                <button className={styles.libraryItem} onClick={() => { addCheckmark(); setIsLibraryOpen(false); }} title="صح">✔️<span>صح</span></button>
+                <button className={styles.libraryItem} onClick={() => { addCross(); setIsLibraryOpen(false); }} title="خطأ">❌<span>خطأ</span></button>
+                <button className={styles.libraryItem} onClick={() => { addSmiley(); setIsLibraryOpen(false); }} title="مبتسم">🙂<span>رائع</span></button>
+                <button className={styles.libraryItem} onClick={() => { addLightbulb(); setIsLibraryOpen(false); }} title="فكرة">💡<span>فكرة</span></button>
+             </div>
+           </div>
+           
+           <div className={styles.librarySection}>
+             <h5>⚙️ أشكال متقدمة</h5>
+             <div className={styles.libraryGrid}>
+                <button className={styles.libraryItem} onClick={() => { addHexagon(); setIsLibraryOpen(false); }} title="سداسي">⬡<span>سداسي</span></button>
+                <button className={styles.libraryItem} onClick={() => { addCylinder(); setIsLibraryOpen(false); }} title="أسطوانة">🛢️<span>أسطوانة</span></button>
+                <button className={styles.libraryItem} onClick={() => { addCube(); setIsLibraryOpen(false); }} title="مكعب">🧊<span>مكعب</span></button>
+                <button className={styles.libraryItem} onClick={() => { addPyramid(); setIsLibraryOpen(false); }} title="هرم">🔺<span>هرم</span></button>
+                <button className={styles.libraryItem} onClick={() => { addCone(); setIsLibraryOpen(false); }} title="مخروط">🍦<span>مخروط</span></button>
+                <button className={styles.libraryItem} onClick={() => { addEllipse(); setIsLibraryOpen(false); }} title="بيضاوي">⬭<span>بيضاوي</span></button>
+                <button className={styles.libraryItem} onClick={() => { addCloud(); setIsLibraryOpen(false); }} title="سحابة">💭<span>سحابة</span></button>
+             </div>
+           </div>
+
+           <div className={styles.librarySection}>
+             <h5>✨ رسومات متحركة</h5>
+             <div className={styles.libraryGrid}>
+                <button className={styles.libraryItem} onClick={() => { addRotatingGear(); setIsLibraryOpen(false); }} title="ترس دوار">⚙️<span>ترس</span></button>
+                <button className={styles.libraryItem} onClick={() => { addPulsingStar(); setIsLibraryOpen(false); }} title="نجمة نابضة">🌟<span>نابضة</span></button>
+                <button className={styles.libraryItem} onClick={() => { addBlinkingArrow(); setIsLibraryOpen(false); }} title="سهم وامض">⬇️<span>سهم</span></button>
+                <button className={styles.libraryItem} onClick={() => { addBeatingHeart(); setIsLibraryOpen(false); }} title="قلب نابض">🫀<span>قلب</span></button>
+                <button className={styles.libraryItem} onClick={() => { addWarningTriangle(); setIsLibraryOpen(false); }} title="تنبيه">⚠️<span>تنبيه</span></button>
+                <button className={styles.libraryItem} onClick={() => { addRotatingHourglass(); setIsLibraryOpen(false); }} title="وقت">⏳<span>وقت</span></button>
+                <button className={styles.libraryItem} onClick={() => { addSyncArrows(); setIsLibraryOpen(false); }} title="أسهم دوارة">🔄<span>أسهم</span></button>
+                <button className={styles.libraryItem} onClick={() => { addShakingRocket(); setIsLibraryOpen(false); }} title="صاروخ">🚀<span>صاروخ</span></button>
+                <button className={styles.libraryItem} onClick={() => { addLoadingSpinner(); setIsLibraryOpen(false); }} title="تحميل">⏳<span>تحميل</span></button>
+                <button className={styles.libraryItem} onClick={() => { addSwingingPendulum(); setIsLibraryOpen(false); }} title="بندول">⏱️<span>بندول</span></button>
+                <button className={styles.libraryItem} onClick={() => { addBouncingBall(); setIsLibraryOpen(false); }} title="كرة قافزة">🏀<span>كرة</span></button>
+             </div>
+           </div>
+        </div>
+      )}
+
+      {/* Advanced Overlays Bottom Right */}
+      <div style={{ position: 'absolute', bottom: 20, right: 20, display: 'flex', gap: 10, zIndex: 10 }}>
+          <button onClick={() => setIsSpotlightActive(!isSpotlightActive)} className={`${styles.toolBtn} ${isSpotlightActive ? styles.activeTool : ''}`} style={{ background: isSpotlightActive ? '#e0e7ff' : 'white', border: '1px solid #cbd5e1' }}><Laser size={20}/><span className={styles.tooltip}>كشاف تركيز</span></button>
+          <button onClick={() => setIsTimerActive(!isTimerActive)} className={`${styles.toolBtn} ${isTimerActive ? styles.activeTool : ''}`} style={{ background: isTimerActive ? '#e0e7ff' : 'white', border: '1px solid #cbd5e1' }}>⏱️<span className={styles.tooltip}>مؤقت</span></button>
+          <button onClick={() => setIsBlindActive(!isBlindActive)} className={`${styles.toolBtn} ${isBlindActive ? styles.activeTool : ''}`} style={{ background: isBlindActive ? '#e0e7ff' : 'white', border: '1px solid #cbd5e1' }}>🎭<span className={styles.tooltip}>ستارة شاشة</span></button>
+      </div>
+
+      <SpotlightOverlay isActive={isSpotlightActive} shape={spotlightShape} isLocked={isSpotlightLocked} />
+      <TimerOverlay isActive={isTimerActive} onClose={() => setIsTimerActive(false)} />
+      <BlindOverlay isActive={isBlindActive} onClose={() => setIsBlindActive(false)} />
+      <MagnifierOverlay isActive={isMagnifierActive} fabricCanvas={canvas} />
+    </div>
+  )
+}

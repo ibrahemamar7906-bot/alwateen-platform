@@ -1,0 +1,375 @@
+/* ═════════════════════════════════════════════════════════════════
+   TRACKER DASHBOARD RESPONSIVE STYLES (المتابع الذكي)
+   ═════════════════════════════════════════════════════════════════ */
+
+.container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #f8fafc;
+  padding: 24px;
+  direction: rtl;
+  font-family: inherit;
+  color: #1e293b;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerSubtitle {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateX(2px);
+}
+
+/* ── TABS ── */
+.tabsContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+  color: #64748b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.tabBtn:hover {
+  background: #f8fafc;
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+.tabBtnActive {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px -3px rgba(5, 150, 105, 0.35) !important;
+  border-color: transparent !important;
+}
+
+/* ── MAIN CARD ── */
+.mainCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
+  min-height: 65vh;
+}
+
+/* ── STATS CARDS ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  padding: 20px;
+  border-radius: 20px;
+  color: #ffffff;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-3px);
+}
+
+/* ── CONTROLS BAR ── */
+.controlsBar {
+  background: #f8fafc;
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1.5px solid #e2e8f0;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── TABLES ── */
+.tableWrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.table th {
+  padding: 14px 16px;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 800;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: #fcfcfc;
+}
+
+/* ── MODALS ── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalBox {
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── BUTTONS ── */
+.btnPrimary {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35);
+}
+
+.btnBlue {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btnBlue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+}
+
+.btnWhatsApp {
+  background: #25D366;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btnWhatsApp:hover {
+  background: #1ebd59;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS (الهاتف والشاشات الصغيرة)
+   ═════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+
+  .header {
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
+
+  .headerTitle {
+    font-size: 1.25rem;
+  }
+
+  .headerSubtitle {
+    font-size: 0.82rem;
+  }
+
+  .backBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tabsContainer {
+    margin-bottom: 16px;
+    gap: 6px;
+  }
+
+  .tabBtn {
+    padding: 9px 15px;
+    font-size: 0.88rem;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  .mainCard {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .controlsBar {
+    padding: 12px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .modalBox {
+    padding: 20px 16px;
+    border-radius: 20px;
+    max-width: 95vw;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .table th, .table td {
+    padding: 10px 8px;
+    font-size: 0.88rem;
+  }
+
+  .btnPrimary, .btnBlue {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 420px) {
+  .tabBtn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+}

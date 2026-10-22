@@ -1,0 +1,61 @@
+'use client'
+import Link from 'next/link'
+import { ArrowRight, Trophy, ChevronLeft, Lock } from 'lucide-react'
+import styles from '../page.module.css'
+
+export default function BranchPage() {
+  const lessons = [
+  {
+    "title": "اختبار شهري على مقررات الفصل",
+    "desc": "نماذج تدريبية بتصحيح فوري على القراءة والنحو."
+  },
+  {
+    "title": "بنك أسئلة النحو والإعراب التفاعلي",
+    "desc": "تمارين مكثفة على إعراب الفاعل والمفعول والمضاف إليه."
+  }
+];
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.headerTop}>
+            <Link href="/primary-5" className={styles.backButton} aria-label="العودة">
+              <ArrowRight size={24} />
+            </Link>
+            <div>
+              <div className={styles.subtitle}>
+                <Trophy size={18} />
+                <span>بنك الأسئلة والاختبارات الشاملة - الصف الخامس الابتدائي</span>
+              </div>
+              <h1 className={styles.title}>مسار بنك الأسئلة والاختبارات الشاملة</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.mainContent} style={{ marginTop: '30px' }}>
+        <div className={styles.cardsGrid}>
+          {lessons.map((lesson, idx) => (
+            <div key={idx} className={styles.courseCard}>
+              <div className={styles.cardHeader}>
+                <div className={styles.iconBox}>
+                  <Trophy size={28} />
+                </div>
+                <span className={styles.badge}>الدرس ${idx + 1} 🌟</span>
+              </div>
+              <h3 className={styles.cardTitle}>{lesson.title}</h3>
+              <p className={styles.cardDesc}>{lesson.desc}</p>
+              <div className={styles.cardFooter}>
+                <span className={styles.footerText}>جاهز للمحتوى والشرح</span>
+                <div className={styles.actionBtn}>
+                  <ChevronLeft size={18} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

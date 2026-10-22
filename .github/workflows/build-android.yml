@@ -1,0 +1,69 @@
+﻿name: Build Android App (APK)
+
+on:
+  workflow_dispatch: # This allows you to manually trigger the build from GitHub UI
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install Capacitor Dependencies
+        run: |
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 --save
+          npm install @capacitor/camera@6 @capacitor/filesystem@6 @capacitor/device@6 --save --legacy-peer-deps
+
+      - name: Initialize Android Project
+        run: |
+          mkdir out
+          echo "<html><body>Loading...</body></html>" > out/index.html
+          npx cap add android
+          # Inject Permissions for Camera, Mic, and Storage
+          sed -i '/<uses-permission android:name="android\.permission\.INTERNET" \/>/a \    <uses-permission android:name="android.permission.CAMERA" />\n    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />\n    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />\n    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />' android/app/src/main/AndroidManifest.xml
+
+      - name: Generate App Icons
+        run: |
+          npm install @capacitor/assets --save-dev
+          mkdir -p assets
+          cp public/logo.png assets/icon.png
+          cp public/logo.png assets/splash.png
+          npx @capacitor/assets generate --android
+          # Force Android to use our icon by removing the default adaptive XMLs that point to the Capacitor logo
+          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+          
+      - name: Fix Arabic App Name
+        run: |
+          sed -i 's/<string name="app_name">.*<\/string>/<string name="app_name">منصة الجنيدي<\/string>/' android/app/src/main/res/values/strings.xml
+
+      - name: Patch Android Permissions
+        run: node scripts/patch-android.js
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Build APK
+        working-directory: ./android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: elgonady-app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk

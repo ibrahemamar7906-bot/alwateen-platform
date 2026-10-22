@@ -1,0 +1,261 @@
+.azkarContainer {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 20px 20px;
+  direction: rtl;
+  font-family: 'Tajawal', sans-serif;
+  color: #1e293b;
+  padding-bottom: 60px;
+}
+
+.header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 60px 20px 30px;
+  text-align: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionBox {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 30px;
+  border: 1px solid #f1f5f9;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f766e;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #ecfdf5;
+  padding-bottom: 10px;
+}
+
+.timingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.timingCard {
+  background: #f8fafc;
+  border-right: 4px solid #10b981;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.timingTitle {
+  font-weight: bold;
+  color: #0f766e;
+  margin-bottom: 5px;
+}
+
+.quranQuote {
+  background: #f0fdf4;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #166534;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.zekrCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  user-select: none; /* Prevent text selection while clicking fast */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.zekrCard:hover:not(.completedCard) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.zekrCard:active:not(.completedCard) {
+  transform: scale(0.98);
+}
+
+.completedCard {
+  background: #f8fafc;
+  border-color: #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+.zekrHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.zekrTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.counterBadge {
+  background: #ecfdf5;
+  color: #059669;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid #a7f3d0;
+  transition: all 0.3s ease;
+}
+
+.counterNumber {
+  font-size: 1.2rem;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.counterBadgeDone {
+  background: #f1f5f9;
+  color: #94a3b8;
+  border-color: #cbd5e1;
+}
+
+.zekrText {
+  font-size: 1.35rem;
+  line-height: 1.9;
+  color: #1e293b;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Amiri', 'Tajawal', serif;
+}
+
+.zekrVariation {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.variationTitle {
+  font-weight: bold;
+  color: #0f766e;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.zekrEvidence {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #475569;
+  border-right: 3px solid #cbd5e1;
+  margin-top: 15px;
+}
+
+.tapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 185, 129, 0.03);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #059669;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.zekrCard:hover:not(.completedCard) .tapOverlay {
+  opacity: 1;
+}
+
+.backBtn, .resetBtn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.backBtn:hover, .resetBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .zekrText {
+    font-size: 1.2rem;
+  }
+  .zekrCard:hover:not(.completedCard) .tapOverlay {
+    opacity: 0; /* Less intrusive on mobile */
+  }
+}

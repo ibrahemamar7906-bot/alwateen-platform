@@ -1,0 +1,670 @@
+﻿:root {
+  /* App height fix for PWA standalone mode (iOS Safari) — overridden by JS */
+  --app-height: 100dvh;
+
+  /* Premium Royal Blue & Warm Gold Palette (Matches New Al-Wateen Logo) */
+  --primary-color: #1A2E86; 
+  --primary-light: #2A49B8; 
+  --primary-dark: #0F1D5C; 
+  --primary-gradient: linear-gradient(135deg, #1A2E86 0%, #2A52C7 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #0F1D5C 0%, #1A2E86 100%);
+  
+  /* Accents */
+  --accent-gold: #DEA24A; /* Warm Amber Gold from Al-Wateen logo */
+  --accent-gold-hover: #C98731;
+  --accent-gold-light: #F6C87C;
+  
+  /* Backgrounds */
+  --bg-main: #f5f8fc; /* Clean, modern subtle blue-slate tint */
+  --bg-card: rgba(255, 255, 255, 0.90);
+  --bg-alt: #edf3fa;
+  
+  /* Text */
+  --text-dark: #0d1b3e;
+  --text-muted: #4b5870;
+  --text-light: #ffffff;
+  
+  /* UI Elements */
+  --border-color: rgba(26, 46, 134, 0.15);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.8);
+  --shadow-sm: 0 2px 4px rgba(26, 46, 134, 0.08);
+  --shadow-md: 0 10px 25px rgba(26, 46, 134, 0.12);
+  --shadow-lg: 0 20px 40px rgba(26, 46, 134, 0.18);
+  --shadow-premium: 0 15px 35px -5px rgba(26, 46, 134, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  
+  /* Neon & Glassmorphism Variables */
+  --neon-glow: 0 0 10px rgba(42, 82, 199, 0.35), 0 0 20px rgba(42, 82, 199, 0.18);
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --neon-glow-hover: 0 0 15px rgba(42, 82, 199, 0.5), 0 0 30px rgba(42, 82, 199, 0.3), 0 0 40px rgba(26, 46, 134, 0.18);
+  --neon-text-glow: 0 0 5px rgba(42, 82, 199, 0.7), 0 0 10px rgba(42, 82, 199, 0.4);
+  /* Border Radius */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  /* Safe area insets for notched/fullscreen devices */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ========================
+   UNIVERSAL RESET
+   ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Tajawal', 'Cairo', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================
+   HTML / BODY — MOBILE FOUNDATION
+   ======================== */
+html {
+  font-size: 16px;
+  /* Prevent iOS font inflation */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Prevent pull-to-refresh & over-bounce on iOS/Android */
+  overscroll-behavior: none;
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image: linear-gradient(rgba(245, 248, 252, 0.75), rgba(245, 248, 252, 0.90)), url('/bg-students.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-dark);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll on ALL pages */
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  /* Support iOS safe areas (notch, home bar) */
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+/* ========================
+   PREVENT iOS INPUT ZOOM
+   Font-size must be >= 16px on all inputs to stop Safari auto-zoom
+   ======================== */
+input, select, textarea {
+  font-size: 16px !important;
+  touch-action: manipulation;
+}
+
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================
+   TYPOGRAPHY
+   ======================== */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Responsive images & videos — never overflow */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================
+   BUTTONS
+   ======================== */
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-premium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  left: 150%;
+}
+
+.btn-primary:hover {
+  background: var(--primary-gradient-hover);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(26, 46, 134, 0.3);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #d97706 100%);
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  user-select: none;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--accent-gold-hover) 0%, #b45309 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(245, 158, 11, 0.4);
+}
+
+.btn-accent:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-outline {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  color: var(--primary-color);
+  padding: 12px 28px;
+  border: 2px solid var(--primary-light);
+  border-radius: var(--radius-lg);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: var(--text-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ========================
+   GLASSMORPHISM UTILITY
+   ======================== */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), var(--neon-glow);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  box-shadow: var(--shadow-lg), var(--neon-glow-hover);
+}
+
+/* ========================
+   LAYOUT UTILITIES
+   ======================== */
+.section-padding {
+  padding: 80px 5%;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 120px 8%;
+  }
+}
+
+/* ========================
+   ANIMATIONS
+   ======================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: scaleY(0.8) translateY(-10px); }
+  to { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* ========================
+   WHATSAPP FLOATING BUTTON
+   ======================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: max(30px, calc(30px + var(--safe-bottom)));
+  left: max(30px, calc(30px + var(--safe-left)));
+  background-color: #25d366;
+  color: white;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    bottom: max(20px, calc(20px + var(--safe-bottom)));
+    left: max(20px, calc(20px + var(--safe-left)));
+  }
+}
+
+/* Hide WhatsApp & PWA buttons on Whiteboard and Document Editor pages */
+body.on-whiteboard .whatsapp-float,
+body:has([class*="whiteboardContainer"]) .whatsapp-float,
+body:has([class*="document-editor"]) .whatsapp-float,
+body:has([class*="documentEditor"]) .whatsapp-float,
+body:has(.sheets-scroll-container) .whatsapp-float,
+body.on-whiteboard [class*="pwa-prompt"],
+body:has([class*="whiteboardContainer"]) [class*="pwa-prompt"],
+body:has([class*="document-editor"]) [class*="pwa-prompt"],
+body:has([class*="documentEditor"]) [class*="pwa-prompt"],
+body:has(.sheets-scroll-container) [class*="pwa-prompt"],
+body.on-whiteboard [class*="pwaPrompt"],
+body:has([class*="whiteboardContainer"]) [class*="pwaPrompt"],
+body:has([class*="document-editor"]) [class*="pwaPrompt"],
+body:has([class*="documentEditor"]) [class*="pwaPrompt"],
+body:has(.sheets-scroll-container) [class*="pwaPrompt"],
+body.on-whiteboard button[class*="install"],
+body:has([class*="whiteboardContainer"]) button[class*="install"],
+body:has([class*="document-editor"]) button[class*="install"],
+body:has([class*="documentEditor"]) button[class*="install"],
+body:has(.sheets-scroll-container) button[class*="install"] {
+  display: none !important;
+}
+
+/* ========================
+   NOTIFICATION DROPDOWN
+   ======================== */
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-width: calc(100vw - 40px);
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  z-index: 9999;
+  margin-top: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  transform-origin: top right;
+  animation: slideDown 0.25s ease-out forwards;
+  /* Smooth scroll inside dropdown */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 768px) {
+  .notifications-dropdown {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90vw, 380px);
+    right: auto;
+    max-height: calc(100dvh - 100px);
+  }
+}
+
+/* Notification Item */
+.notification-item {
+  padding: 15px;
+  border-bottom: 1px solid #f9f9f9;
+  transition: background 0.3s;
+}
+
+.notification-item.unread {
+  background: #f0fdf4;
+  border-right: 4px solid var(--primary-color);
+}
+
+.notification-item:hover {
+  background: #f8fafc;
+}
+
+/* ========================
+   RESPONSIVE GRID UTILITIES
+   ======================== */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+/* ========================
+   GAME / CANVAS TOUCH HANDLING
+   Prevent gesture zoom, double-tap zoom, text selection on game areas
+   ======================== */
+.gameArea, .battlefield, .canvasWrapper, canvas {
+  touch-action: none !important;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Disable callout on long press (iOS) */
+  -webkit-touch-callout: none;
+}
+
+/* ========================
+   MODALS — MOBILE SAFE
+   ======================== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  /* Use safe areas */
+  padding-bottom: max(16px, calc(16px + var(--safe-bottom)));
+}
+
+/* ========================
+   SCROLL UTILITIES
+   ======================== */
+
+/* Remove scrollbar on mobile sidebars etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth momentum scrolling on iOS */
+.scroll-smooth-ios {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ========================
+   DASHBOARD SIDEBAR — MOBILE
+   Shared between admin & student dashboards
+   Uses 100dvh to account for dynamic browser UI
+   ======================== */
+@media (max-width: 768px) {
+  /* Any fixed sidebar drawer should use 100dvh not 100vh */
+  [class*="sidebar"] {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+}
+
+/* ========================
+   RESPONSIVE TYPOGRAPHY
+   ======================== */
+@media (max-width: 480px) {
+  h1 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+  h2 { font-size: clamp(1.2rem, 5vw, 2rem); }
+  h3 { font-size: clamp(1rem, 4vw, 1.5rem); }
+}
+
+/* ========================
+   TABLE OVERFLOW FIX
+   ======================== */
+.tableContainer, [class*="tableContainer"] {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Visual affordance for scroll */
+  scrollbar-width: thin;
+}
+
+/* ========================
+   HIDE SCROLLBAR ON MOBILE BARS
+   (nav bars, tab bars, etc.)
+   ======================== */
+header, footer, nav {
+  scrollbar-width: none;
+}
+header::-webkit-scrollbar, footer::-webkit-scrollbar, nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================
+   LIVE CLASSROOM TOAST ANIMATION
+   ======================== */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ========================
+   TABLET BREAKPOINT (768–1023px)
+   ======================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .btn-primary {
+    padding: 11px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* ========================
+   LANDSCAPE MOBILE — short screens
+   ======================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  body { font-size: 14px; }
+}
+
+/* ========================
+   MINIMUM TOUCH TARGET (Apple HIG: 44×44pt)
+   ======================== */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+/* Live classroom compact buttons override */
+.live-btn-sm {
+  min-height: 36px;
+  min-width: 36px;
+}
+
+/* ========================
+   CURSOR OVERRIDE ON TOUCH DEVICES
+   ======================== */
+@media (hover: none) and (pointer: coarse) {
+  * { cursor: default !important; }
+  button, a, [role="button"] { cursor: pointer !important; }
+}
+
+/* ========================
+   SAFE AREA UTILITY CLASSES
+   ======================== */
+.safe-top    { padding-top:    env(safe-area-inset-top,    0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-left   { padding-left:   env(safe-area-inset-left,   0px); }
+.safe-right  { padding-right:  env(safe-area-inset-right,  0px); }
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* =========================================================================
+   MOBILE OVERRIDES FOR REACT INLINE STYLES (UNSEEN READING & LESSONS)
+   ========================================================================= */
+@media (max-width: 768px) {
+  /* Main wrapper padding */
+  div[style*="padding: 40px 20px"] {
+    padding: 15px 10px !important;
+  }
+  
+  /* Content Boxes (Text and Questions) */
+  div[style*="padding: 40px"] {
+    padding: 20px 15px !important;
+    margin-bottom: 25px !important;
+  }
+  
+  /* Header flexbox (strictly scoped to reading and lesson passages) */
+  :is(.unseen-reading-page, .lesson-reading-page, .passage-container, .reading-container) div[style*="justify-content: space-between"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 20px 15px !important;
+    gap: 15px !important;
+    text-align: center !important;
+  }
+  
+  /* Lesson/Test Titles */
+  h1[style*="font-size: 2.2rem"] {
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Subtitles */
+  h2[style*="font-size: 1.8rem"] {
+    font-size: 1.3rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Question Titles */
+  h3[style*="font-size: 1.35rem"] {
+    font-size: 1.15rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Passage Text */
+  div[style*="font-size: 1.25rem"] {
+    font-size: 1.05rem !important;
+    line-height: 1.9 !important;
+  }
+  
+  /* Question Boxes / Tutor Boxes */
+  div[style*="padding: 25px"] {
+    padding: 15px !important;
+    margin-right: 0 !important; /* Fix tutor box indent */
+    margin-top: 10px !important;
+  }
+  
+  /* Tutor Titles */
+  h4[style*="font-size: 1.4rem"] {
+    font-size: 1.15rem !important;
+  }
+  
+  /* Buttons (Options) */
+  button[style*="padding: 16px 20px"] {
+    padding: 12px 15px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Back Button */
+  button[style*="padding: 12px 25px"] {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Index Grid */
+  div[style*="grid-template-columns: repeat(auto-fit"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Sub-badges (strictly scoped to reading and lesson passages) */
+  :is(.unseen-reading-page, .lesson-reading-page, .passage-container, .reading-container) div[style*="gap: 10px"][style*="align-items: center"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+/* ========================
+   GLOBAL PRINT RULES (Zero clutter on printed pages)
+   ======================== */
+@media print {
+  .no-print,
+  .whatsapp-float,
+  .pwa-floating-banner,
+  button[title*="تثبيت المنصة"],
+  a[href*="wa.me"],
+  a[aria-label*="واتساب"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+

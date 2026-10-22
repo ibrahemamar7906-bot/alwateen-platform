@@ -1,0 +1,13 @@
+﻿{
+  "appId": "com.alwateen.platform",
+  "appName": "منصة الوتين",
+  "webDir": "out",
+  
+  "server": {
+    "url": "https://alwateen.com",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

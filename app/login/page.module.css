@@ -1,0 +1,441 @@
+﻿/* ═════════════════════════════════════════════
+   منصة الوتين - Login Page Styles (Premium SaaS)
+═════════════════════════════════════════════ */
+
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(26, 46, 134, 0.70), rgba(5, 30, 20, 0.90)), url('/bg-students.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 24px 16px;
+  font-family: 'Tajawal', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern & Glows */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(#2042AD 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.glow1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.formCard {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  padding: clamp(32px, 5vw, 48px);
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.15), 0 0 0 1px rgba(5, 150, 105, 0.05);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.formCard:hover {
+  transform: translateY(-4px);
+}
+
+.backHome {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2042AD;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(5, 150, 105, 0.06);
+  transition: all 0.2s ease;
+}
+.backHome:hover {
+  background: rgba(5, 150, 105, 0.12);
+  transform: translateX(4px);
+}
+
+.logoContainer {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logoWrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 22px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(5, 150, 105, 0.15);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.12);
+}
+
+.title {
+  text-align: center;
+  color: #064e3b;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.errorAlert {
+  background-color: #fef2f2;
+  color: #ef4444;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  color: #334155;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 16px;
+  color: #2042AD;
+  opacity: 0.7;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding: 14px 16px 14px 44px; /* Icon is on the right in RTL, so padding-right is larger. Wait, dir="ltr" is used for inputs! So icon is right, text starts left. 44px on right */
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+/* Correcting padding for LTR inputs with RTL icon */
+.inputWrapper input[dir="ltr"] {
+  padding-right: 44px;
+  padding-left: 16px;
+}
+
+.inputWrapper input:focus {
+  outline: none;
+  border-color: #2042AD;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+.togglePassBtn {
+  position: absolute;
+  left: 14px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.togglePassBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Premium Primary Button with Shine Effect */
+.submitBtn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #2042AD, #10b981);
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  animation: none;
+}
+.submitBtn:disabled::after {
+  display: none;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.registerLink {
+  color: #2042AD;
+  font-weight: 800;
+  text-decoration: none;
+  margin-right: 6px;
+  transition: color 0.2s;
+}
+.registerLink:hover {
+  color: #1A358A;
+  text-decoration: underline;
+}
+
+/* Fast Login Styles */
+.fastLoginSection {
+  margin-bottom: 25px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.fastLoginTitle {
+  font-size: 1rem;
+  color: #334155;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.accountsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.savedAccountCard {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.savedAccountCard:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.accountBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: right;
+  font-family: inherit;
+}
+
+.accountAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.accountAvatarPlaceholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #d1fae5;
+  color: #2042AD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accountName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.accountEmail {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.removeAccountBtn {
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeAccountBtn:hover {
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.divider::before { margin-left: 15px; }
+.divider::after { margin-right: 15px; }
+
+/* Remember Me Checkbox */
+.rememberMeGroup {
+  margin-bottom: 20px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  user-select: none;
+}
+
+.hiddenCheckbox {
+  display: none;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.2s;
+}
+
+.checkbox.checked {
+  background: #2042AD;
+  border-color: #2042AD;
+}

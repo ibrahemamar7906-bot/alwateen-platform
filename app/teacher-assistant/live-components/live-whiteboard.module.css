@@ -1,0 +1,481 @@
+/* ============================
+   CONTAINER
+   ============================ */
+.container {
+  position: relative;
+  height: 100dvh;
+  width: 100vw;
+  background-color: #f8fafc;
+  overflow: hidden;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.canvasWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ============================
+   BACKGROUND TYPES
+   ============================ */
+.blank { background-color: white; }
+.ruled {
+  background-color: white;
+  background-image: linear-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 100% 40px;
+}
+.grid {
+  background-color: white;
+  background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================
+   FLOATING GLASS PANELS (DESKTOP)
+   ============================ */
+.glassPanel {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  z-index: 9990;
+  display: flex;
+  padding: 4px;
+  gap: 3px;
+  transition: box-shadow 0.2s ease;
+}
+.glassPanel:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* DESKTOP POSITIONS */
+.bottomToolbar {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+  align-items: center;
+  max-width: calc(100vw - 400px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.leftToolbar {
+  top: 70px;
+  left: 16px;
+  flex-direction: column;
+  max-height: calc(100% - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.leftToolbar::-webkit-scrollbar { width: 4px; }
+.leftToolbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
+
+.topRightToolbar {
+  top: 16px;
+  right: 16px;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 200px;
+  max-height: calc(100% - 100px);
+  overflow-y: auto;
+  padding: 8px;
+}
+.topRightToolbar::-webkit-scrollbar { width: 4px; }
+.topRightToolbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
+
+.topLeftToolbar {
+  top: 16px;
+  left: 16px;
+  flex-direction: row;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.advancedToolsContainer {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+  z-index: 9990;
+  flex-wrap: wrap;
+  max-width: 220px;
+  justify-content: flex-end;
+}
+
+/* ============================
+   BUTTONS
+   ============================ */
+.toolBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+.toolBtn:hover {
+  background: #f1f5f9;
+  color: #0f5132;
+}
+.activeTool {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+/* ============================
+   TOOLTIP
+   ============================ */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  font-weight: normal;
+  z-index: 9992;
+}
+.toolBtn:hover .tooltip { opacity: 1; }
+
+.leftToolbar .tooltip {
+  bottom: 50%;
+  left: calc(100% + 10px);
+  transform: translateY(50%);
+}
+
+/* ============================
+   POPUP MENUS
+   ============================ */
+.popupMenu {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 8px;
+  z-index: 9991;
+}
+
+.popupMenuGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+/* ============================
+   COLORS
+   ============================ */
+.colorsGroup {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.colorBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px #cbd5e1;
+  cursor: pointer;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+.colorBtn:hover { transform: scale(1.15); }
+.activeColor { box-shadow: 0 0 0 2px #0f5132; transform: scale(1.15); }
+
+/* ============================
+   INPUTS
+   ============================ */
+.rangeInput { width: 100%; accent-color: #059669; }
+.selectInput {
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* ============================
+   ACTION BUTTONS
+   ============================ */
+.actionBtn {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+.actionBtn:hover { background: #e2e8f0; }
+.primaryBtn { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+.primaryBtn:hover { background: #dbeafe; }
+.dangerBtn { background: #fee2e2; color: #ef4444; border: 1px solid #fecaca; }
+.dangerBtn:hover { background: #fecaca; }
+
+/* ============================
+   STICKY NOTE
+   ============================ */
+.stickyNoteItem {
+  width: 38px;
+  height: 38px;
+  border-radius: 0 0 10px 0;
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.15s;
+}
+.stickyNoteItem:hover { transform: scale(1.1); }
+
+/* ============================
+   LIBRARY PANEL
+   ============================ */
+.libraryPanel {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  max-height: 78vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  z-index: 9993;
+}
+.librarySection h5 { margin: 0 0 8px 0; color: #64748b; font-size: 0.82rem; }
+.libraryGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 14px; }
+.libraryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  background: #f8fafc;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  color: #334155;
+  font-size: 1.1rem;
+}
+.libraryItem:hover { background: #f1f5f9; border-color: #cbd5e1; color: #0f5132; }
+.libraryItem span { font-size: 0.65rem; margin-top: 3px; text-align: center; font-weight: 500; }
+
+/* ============================
+   HIDE/SHOW MOBILE ONLY
+   ============================ */
+.mobileOnly { display: none !important; }
+
+/* ============================
+   MOBILE LAYOUT (max-width: 768px)
+
+   Layout — 5 rows stacked at BOTTOM, nothing at top:
+   ROW 1 (bottom:5px)   ? bottomToolbar  (Insert: shapes, images, text…)
+   ROW 2 (bottom:44px)  ? leftToolbar    (Drawing: pen, eraser, select…)
+   ROW 3 (bottom:83px)  ? topRightToolbar (Colors + Settings)
+   ROW 4 (bottom:122px) ? advancedToolsContainer (Calculator, Timer…)
+   TOP (top:5px left:5px) ? topLeftToolbar (Pages nav — compact, alone at top)
+   ============================ */
+@media (max-width: 768px) {
+  .mobileOnly { display: flex !important; }
+  .mobileHidden { display: none !important; }
+
+  /* ?? Shared base for ALL mobile toolbars ?? */
+  .topLeftToolbar,
+  .topRightToolbar,
+  .advancedToolsContainer,
+  .leftToolbar,
+  .bottomToolbar {
+    padding: 3px !important;
+    gap: 3px !important;
+    border-radius: 10px !important;
+    width: max-content !important;
+    max-width: calc(100vw - 10px) !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-direction: row !important;
+    /* Center horizontally by default — overridden below as needed */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: auto !important;
+    top: auto !important;
+  }
+
+  /* ?? 1. Pages toolbar ? TOP LEFT (only thing at top) ?? */
+  .topLeftToolbar {
+    top: 5px !important;
+    left: 5px !important;
+    transform: none !important;
+    bottom: auto !important;
+    z-index: 50 !important;
+  }
+
+  /* ?? 2. Advanced tools (Calculator / Timer / Spotlight) ? ROW 4 ?? */
+  .advancedToolsContainer {
+    bottom: 122px !important;
+    z-index: 46 !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+    display: flex !important;
+  }
+
+  /* ?? 3. Colors + Settings ? ROW 3 ?? */
+  .topRightToolbar {
+    bottom: 83px !important;
+    min-width: unset !important;
+    z-index: 45 !important;
+    overflow: visible !important;
+    align-items: center !important;
+  }
+
+  /* ?? 4. Drawing tools ? ROW 2 ?? */
+  .leftToolbar {
+    bottom: 44px !important;
+    z-index: 44 !important;
+  }
+
+  /* ?? 5. Insertion tools ? ROW 1 (very bottom) ?? */
+  .bottomToolbar {
+    bottom: 5px !important;
+    z-index: 43 !important;
+  }
+
+  /* ?? Buttons: comfortable touch size ?? */
+  .toolBtn {
+    flex-shrink: 0;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 7px !important;
+    font-size: 12px !important;
+    flex-shrink: 0 !important;
+  }
+  .toolBtn svg { width: 15px !important; height: 15px !important; }
+
+  /* ?? Colors: compact scrollable row ?? */
+  .colorsGroup {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 3px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    max-width: 160px !important;
+  }
+  .colorBtn {
+    width: 15px !important;
+    height: 15px !important;
+    border-width: 1.5px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ?? Tooltip: always show above the button ?? */
+  .toolBtn .tooltip {
+    bottom: calc(100% + 5px) !important;
+    top: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* ?? Library panel: full-screen modal ?? */
+  .libraryPanel {
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: calc(100vw - 20px) !important;
+    max-width: 340px !important;
+    max-height: 72vh !important;
+  }
+
+  /* ?? Popup menu: rises above toolbar ?? */
+  .popupMenu {
+    bottom: 40px !important;
+    padding: 8px !important;
+    gap: 6px !important;
+  }
+
+  /* ?? Compact inputs ?? */
+  .rangeInput { width: 90px !important; }
+  .selectInput { width: 90px !important; font-size: 11px !important; padding: 2px 4px !important; }
+  .actionBtn { font-size: 11px !important; padding: 4px 8px !important; width: auto !important; }
+}
+
+/* Setting Group (used in topRightToolbar settings panel) */
+.settingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.settingGroup label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Separator line */
+.separator {
+  width: 1px;
+  height: 24px;
+  background: #cbd5e1;
+  margin: 0 2px;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 768px) {
+  .advancedToolsContainer, .leftToolbar, .bottomToolbar, .topRightToolbar, .topLeftToolbar {
+    justify-content: flex-start !important;
+  }
+  .toolBtn {
+    flex-shrink: 0 !important;
+  }
+}
+

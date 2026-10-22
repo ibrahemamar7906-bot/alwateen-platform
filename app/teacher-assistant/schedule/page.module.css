@@ -1,0 +1,159 @@
+.container {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Tajawal', sans-serif;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #0f5132;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.formSection {
+  flex: 1;
+  min-width: 350px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.previewSection {
+  flex: 1.5;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: #fdfdfd;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: #fbbf24;
+  background: #fff;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.canvasContainer {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+.canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.downloadBtn {
+  background: #fbbf24;
+  color: #0f5132;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.downloadBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.6);
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.dayCard {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.dayCard h4 {
+  margin-bottom: 10px;
+  color: #0f5132;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .formSection, .previewSection {
+    min-width: 100%;
+    width: 100%;
+    padding: 15px;
+  }
+  .canvasContainer {
+    max-width: 100vw;
+    overflow-x: auto;
+  }
+}

@@ -1,0 +1,349 @@
+.container {
+    min-height: 100vh;
+    padding-bottom: 50px;
+    direction: rtl;
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  .header {
+    margin-bottom: -40px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .headerContent {
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.9), rgba(15, 118, 110, 0.9));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px 20px 70px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .headerTop {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .backButton {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 12px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .backButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+  }
+  
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #a7f3d0;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  
+  .title {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 5px 0 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .mainContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 20;
+  }
+  
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+  }
+  
+  .courseCard {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    padding: 30px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 2px 10px rgba(255,255,255,0.8) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .courseCard:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 2px 10px rgba(255,255,255,1) !important;
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  .lockedCard {
+    opacity: 0.75;
+    filter: grayscale(20%);
+    cursor: not-allowed;
+  }
+  
+  .lockedCard:hover {
+    transform: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 2px 10px rgba(255,255,255,0.8) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .iconBox {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ecfdf5;
+    border: 1px solid #d1fae5;
+    color: #059669;
+    transition: transform 0.3s ease;
+  }
+  
+  .courseCard:hover .iconBox {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .lockedCard .iconBox {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #64748b;
+  }
+  
+  .lockedCard:hover .iconBox {
+    transform: none;
+  }
+  
+  .badge {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1px solid #d1fae5;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  
+  .lockedBadge {
+    background: #f1f5f9;
+    color: #64748b;
+    border-color: #e2e8f0;
+  }
+  
+  .cardTitle {
+    color: #1e293b;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .courseCard:hover .cardTitle {
+    color: #059669;
+  }
+  
+  .lockedCard:hover .cardTitle {
+    color: #1e293b;
+  }
+  
+  .cardDesc {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 25px;
+    flex-grow: 1;
+    font-weight: 500;
+  }
+  
+  .cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .footerText {
+    color: #059669;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  
+  .lockedFooterText {
+    color: #94a3b8;
+  }
+  
+  .actionBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ecfdf5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #059669;
+    transition: all 0.3s;
+  }
+  
+  .courseCard:hover .actionBtn {
+    background: #d1fae5;
+    transform: translateX(-4px);
+  }
+  
+  @media (max-width: 768px) {
+    .cardsGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .title {
+      font-size: 1.8rem;
+    }
+  }
+
+/* List view specific styles */
+.listGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.listCard {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  padding: 20px 25px !important;
+  border-radius: 24px !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03), inset 0 2px 10px rgba(255,255,255,0.8) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.listCard:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), inset 0 2px 10px rgba(255,255,255,1) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.listCardLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.listIconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ecfdf5;
+  border: 1px solid #d1fae5;
+  color: #059669;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.listCard:hover .listIconBox {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.lockedCard .listIconBox {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+.lockedCard:hover .listIconBox {
+  transform: none;
+}
+
+.listCardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.listCardTitle {
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 5px;
+  transition: color 0.3s ease;
+}
+
+.listCard:hover .listCardTitle {
+  color: #059669;
+}
+
+.lockedCard:hover .listCardTitle {
+  color: #1e293b;
+}
+
+.listCardDesc {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.listCardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .listCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  .listCardRight {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 15px;
+  }
+}

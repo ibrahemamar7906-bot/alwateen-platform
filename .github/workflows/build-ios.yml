@@ -1,0 +1,59 @@
+﻿name: Build iOS App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Capacitor Dependencies
+        run: |
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/ios@6 --save
+          npm install @capacitor/camera@6 @capacitor/filesystem@6 @capacitor/device@6 --save --legacy-peer-deps
+
+      - name: Initialize iOS Project
+        run: |
+          mkdir out
+          echo "<html><body>Loading...</body></html>" > out/index.html
+          npx cap add ios
+          # Inject Permissions for Camera, Mic, and Storage into Info.plist
+          plutil -insert NSCameraUsageDescription -string "We need camera access for live classes" ios/App/App/Info.plist || true
+          plutil -insert NSMicrophoneUsageDescription -string "We need microphone access for live classes" ios/App/App/Info.plist || true
+          plutil -insert NSPhotoLibraryUsageDescription -string "We need photo library access to upload files" ios/App/App/Info.plist || true
+          plutil -insert NSPhotoLibraryAddUsageDescription -string "We need access to save photos" ios/App/App/Info.plist || true
+
+            plutil -insert NSMicrophoneUsageDescription -string "نحتاج صلاحية المايكروفون للتحدث في البث المباشر" ios/App/App/Info.plist || true
+            plutil -insert NSPhotoLibraryUsageDescription -string "نحتاج صلاحية المعرض لرفع الملفات والصور" ios/App/App/Info.plist || true
+            plutil -insert NSPhotoLibraryAddUsageDescription -string "نحتاج الصلاحية لحفظ الصور" ios/App/App/Info.plist || true
+
+      - name: Generate App Icons
+        run: |
+          npm install @capacitor/assets --save-dev
+          mkdir -p assets
+          cp public/logo.png assets/icon.png
+          cp public/logo.png assets/splash.png
+          npx @capacitor/assets generate --ios
+          
+      - name: Sync Capacitor
+        run: npx cap sync ios
+
+      - name: Build unsigned iOS App (Archive)
+        working-directory: ./ios/App
+        run: |
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -archivePath $PWD/build/App.xcarchive clean archive CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload iOS Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: elgonady-ios-archive
+          path: ios/App/build/App.xcarchive

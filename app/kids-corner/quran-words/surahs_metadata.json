@@ -1,0 +1,914 @@
+[
+  {
+    "id": 1,
+    "name": "سورة ٱلْفَاتِحَةِ",
+    "englishName": "Al-Faatiha",
+    "ayahsCount": 7,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 2,
+    "name": "سورة البَقَرَةِ",
+    "englishName": "Al-Baqara",
+    "ayahsCount": 286,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 3,
+    "name": "سورة آلِ عِمۡرَانَ",
+    "englishName": "Aal-i-Imraan",
+    "ayahsCount": 200,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 4,
+    "name": "سورة النِّسَاءِ",
+    "englishName": "An-Nisaa",
+    "ayahsCount": 176,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 5,
+    "name": "سورة المَائـِدَةِ",
+    "englishName": "Al-Maaida",
+    "ayahsCount": 120,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 6,
+    "name": "سورة الأَنۡعَامِ",
+    "englishName": "Al-An'aam",
+    "ayahsCount": 165,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 7,
+    "name": "سورة الأَعۡرَافِ",
+    "englishName": "Al-A'raaf",
+    "ayahsCount": 206,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 8,
+    "name": "سورة الأَنفَالِ",
+    "englishName": "Al-Anfaal",
+    "ayahsCount": 75,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 9,
+    "name": "سورة التَّوۡبَةِ",
+    "englishName": "At-Tawba",
+    "ayahsCount": 129,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 10,
+    "name": "سورة يُونُسَ",
+    "englishName": "Yunus",
+    "ayahsCount": 109,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 11,
+    "name": "سورة هُودٍ",
+    "englishName": "Hud",
+    "ayahsCount": 123,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 12,
+    "name": "سورة يُوسُفَ",
+    "englishName": "Yusuf",
+    "ayahsCount": 111,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 13,
+    "name": "سورة الرَّعۡدِ",
+    "englishName": "Ar-Ra'd",
+    "ayahsCount": 43,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 14,
+    "name": "سورة إِبۡرَاهِيمَ",
+    "englishName": "Ibrahim",
+    "ayahsCount": 52,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 15,
+    "name": "سورة الحِجۡرِ",
+    "englishName": "Al-Hijr",
+    "ayahsCount": 99,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 16,
+    "name": "سورة النَّحۡلِ",
+    "englishName": "An-Nahl",
+    "ayahsCount": 128,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 17,
+    "name": "سورة الإِسۡرَاءِ",
+    "englishName": "Al-Israa",
+    "ayahsCount": 111,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 18,
+    "name": "سورة الكَهۡفِ",
+    "englishName": "Al-Kahf",
+    "ayahsCount": 110,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 19,
+    "name": "سورة مَرۡيَمَ",
+    "englishName": "Maryam",
+    "ayahsCount": 98,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 20,
+    "name": "سورة طه",
+    "englishName": "Taa-Haa",
+    "ayahsCount": 135,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 21,
+    "name": "سورة الأَنبِيَاءِ",
+    "englishName": "Al-Anbiyaa",
+    "ayahsCount": 112,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 22,
+    "name": "سورة الحَجِّ",
+    "englishName": "Al-Hajj",
+    "ayahsCount": 78,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 23,
+    "name": "سورة المُؤۡمِنُونَ",
+    "englishName": "Al-Muminoon",
+    "ayahsCount": 118,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 24,
+    "name": "سورة النُّورِ",
+    "englishName": "An-Noor",
+    "ayahsCount": 64,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 25,
+    "name": "سورة الفُرۡقَانِ",
+    "englishName": "Al-Furqaan",
+    "ayahsCount": 77,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 26,
+    "name": "سورة الشُّعَرَاءِ",
+    "englishName": "Ash-Shu'araa",
+    "ayahsCount": 227,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 27,
+    "name": "سورة النَّمۡلِ",
+    "englishName": "An-Naml",
+    "ayahsCount": 93,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 28,
+    "name": "سورة القَصَصِ",
+    "englishName": "Al-Qasas",
+    "ayahsCount": 88,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 29,
+    "name": "سورة العَنكَبُوتِ",
+    "englishName": "Al-Ankaboot",
+    "ayahsCount": 69,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 30,
+    "name": "سورة الرُّومِ",
+    "englishName": "Ar-Room",
+    "ayahsCount": 60,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 31,
+    "name": "سورة لُقۡمَانَ",
+    "englishName": "Luqman",
+    "ayahsCount": 34,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 32,
+    "name": "سورة السَّجۡدَةِ",
+    "englishName": "As-Sajda",
+    "ayahsCount": 30,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 33,
+    "name": "سورة الأَحۡزَابِ",
+    "englishName": "Al-Ahzaab",
+    "ayahsCount": 73,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 34,
+    "name": "سورة سَبَإٍ",
+    "englishName": "Saba",
+    "ayahsCount": 54,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 35,
+    "name": "سورة فَاطِرٍ",
+    "englishName": "Faatir",
+    "ayahsCount": 45,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 36,
+    "name": "سورة يسٓ",
+    "englishName": "Yaseen",
+    "ayahsCount": 83,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 37,
+    "name": "سورة الصَّافَّاتِ",
+    "englishName": "As-Saaffaat",
+    "ayahsCount": 182,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 38,
+    "name": "سورة صٓ",
+    "englishName": "Saad",
+    "ayahsCount": 88,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 39,
+    "name": "سورة الزُّمَرِ",
+    "englishName": "Az-Zumar",
+    "ayahsCount": 75,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 40,
+    "name": "سورة غَافِرٍ",
+    "englishName": "Ghafir",
+    "ayahsCount": 85,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 41,
+    "name": "سورة فُصِّلَتۡ",
+    "englishName": "Fussilat",
+    "ayahsCount": 54,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 42,
+    "name": "سورة الشُّورَىٰ",
+    "englishName": "Ash-Shura",
+    "ayahsCount": 53,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 43,
+    "name": "سورة الزُّخۡرُفِ",
+    "englishName": "Az-Zukhruf",
+    "ayahsCount": 89,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 44,
+    "name": "سورة الدُّخَانِ",
+    "englishName": "Ad-Dukhaan",
+    "ayahsCount": 59,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 45,
+    "name": "سورة الجَاثِيَةِ",
+    "englishName": "Al-Jaathiya",
+    "ayahsCount": 37,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 46,
+    "name": "سورة الأَحۡقَافِ",
+    "englishName": "Al-Ahqaf",
+    "ayahsCount": 35,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 47,
+    "name": "سورة مُحَمَّدٍ",
+    "englishName": "Muhammad",
+    "ayahsCount": 38,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 48,
+    "name": "سورة الفَتۡحِ",
+    "englishName": "Al-Fath",
+    "ayahsCount": 29,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 49,
+    "name": "سورة الحُجُرَاتِ",
+    "englishName": "Al-Hujuraat",
+    "ayahsCount": 18,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 50,
+    "name": "سورة قٓ",
+    "englishName": "Qaaf",
+    "ayahsCount": 45,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 51,
+    "name": "سورة الذَّارِيَاتِ",
+    "englishName": "Adh-Dhaariyat",
+    "ayahsCount": 60,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 52,
+    "name": "سورة الطُّورِ",
+    "englishName": "At-Tur",
+    "ayahsCount": 49,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 53,
+    "name": "سورة النَّجۡمِ",
+    "englishName": "An-Najm",
+    "ayahsCount": 62,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 54,
+    "name": "سورة القَمَرِ",
+    "englishName": "Al-Qamar",
+    "ayahsCount": 55,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 55,
+    "name": "سورة الرَّحۡمَٰن",
+    "englishName": "Ar-Rahmaan",
+    "ayahsCount": 78,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 56,
+    "name": "سورة الوَاقِعَةِ",
+    "englishName": "Al-Waaqia",
+    "ayahsCount": 96,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 57,
+    "name": "سورة الحَدِيدِ",
+    "englishName": "Al-Hadid",
+    "ayahsCount": 29,
+    "category": "all",
+    "juz": null
+  },
+  {
+    "id": 58,
+    "name": "سورة المُجَادلَةِ",
+    "englishName": "Al-Mujaadila",
+    "ayahsCount": 22,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 59,
+    "name": "سورة الحَشۡرِ",
+    "englishName": "Al-Hashr",
+    "ayahsCount": 24,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 60,
+    "name": "سورة المُمۡتَحنَةِ",
+    "englishName": "Al-Mumtahana",
+    "ayahsCount": 13,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 61,
+    "name": "سورة الصَّفِّ",
+    "englishName": "As-Saff",
+    "ayahsCount": 14,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 62,
+    "name": "سورة الجُمُعَةِ",
+    "englishName": "Al-Jumu'a",
+    "ayahsCount": 11,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 63,
+    "name": "سورة المُنَافِقُونَ",
+    "englishName": "Al-Munaafiqoon",
+    "ayahsCount": 11,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 64,
+    "name": "سورة التَّغَابُنِ",
+    "englishName": "At-Taghaabun",
+    "ayahsCount": 18,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 65,
+    "name": "سورة الطَّلَاقِ",
+    "englishName": "At-Talaaq",
+    "ayahsCount": 12,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 66,
+    "name": "سورة التَّحۡرِيمِ",
+    "englishName": "At-Tahrim",
+    "ayahsCount": 12,
+    "category": "all",
+    "juz": 28
+  },
+  {
+    "id": 67,
+    "name": "سورة المُلۡكِ",
+    "englishName": "Al-Mulk",
+    "ayahsCount": 30,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 68,
+    "name": "سورة القَلَمِ",
+    "englishName": "Al-Qalam",
+    "ayahsCount": 52,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 69,
+    "name": "سورة الحَاقَّةِ",
+    "englishName": "Al-Haaqqa",
+    "ayahsCount": 52,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 70,
+    "name": "سورة المَعَارِجِ",
+    "englishName": "Al-Ma'aarij",
+    "ayahsCount": 44,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 71,
+    "name": "سورة نُوحٍ",
+    "englishName": "Nooh",
+    "ayahsCount": 28,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 72,
+    "name": "سورة الجِنِّ",
+    "englishName": "Al-Jinn",
+    "ayahsCount": 28,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 73,
+    "name": "سورة المُزَّمِّلِ",
+    "englishName": "Al-Muzzammil",
+    "ayahsCount": 20,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 74,
+    "name": "سورة المُدَّثِّرِ",
+    "englishName": "Al-Muddaththir",
+    "ayahsCount": 56,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 75,
+    "name": "سورة القِيَامَةِ",
+    "englishName": "Al-Qiyaama",
+    "ayahsCount": 40,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 76,
+    "name": "سورة الإِنسَانِ",
+    "englishName": "Al-Insaan",
+    "ayahsCount": 31,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 77,
+    "name": "سورة المُرۡسَلَاتِ",
+    "englishName": "Al-Mursalaat",
+    "ayahsCount": 50,
+    "category": "juz_29",
+    "juz": 29
+  },
+  {
+    "id": 78,
+    "name": "سورة النَّبَإِ",
+    "englishName": "An-Naba",
+    "ayahsCount": 40,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 79,
+    "name": "سورة النَّازِعَاتِ",
+    "englishName": "An-Naazi'aat",
+    "ayahsCount": 46,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 80,
+    "name": "سورة عَبَسَ",
+    "englishName": "Abasa",
+    "ayahsCount": 42,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 81,
+    "name": "سورة التَّكۡوِيرِ",
+    "englishName": "At-Takwir",
+    "ayahsCount": 29,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 82,
+    "name": "سورة الانفِطَارِ",
+    "englishName": "Al-Infitaar",
+    "ayahsCount": 19,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 83,
+    "name": "سورة المُطَفِّفِينَ",
+    "englishName": "Al-Mutaffifin",
+    "ayahsCount": 36,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 84,
+    "name": "سورة الانشِقَاقِ",
+    "englishName": "Al-Inshiqaaq",
+    "ayahsCount": 25,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 85,
+    "name": "سورة البُرُوجِ",
+    "englishName": "Al-Burooj",
+    "ayahsCount": 22,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 86,
+    "name": "سورة الطَّارِقِ",
+    "englishName": "At-Taariq",
+    "ayahsCount": 17,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 87,
+    "name": "سورة الأَعۡلَىٰ",
+    "englishName": "Al-A'laa",
+    "ayahsCount": 19,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 88,
+    "name": "سورة الغَاشِيَةِ",
+    "englishName": "Al-Ghaashiya",
+    "ayahsCount": 26,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 89,
+    "name": "سورة الفَجۡرِ",
+    "englishName": "Al-Fajr",
+    "ayahsCount": 30,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 90,
+    "name": "سورة البَلَدِ",
+    "englishName": "Al-Balad",
+    "ayahsCount": 20,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 91,
+    "name": "سورة الشَّمۡسِ",
+    "englishName": "Ash-Shams",
+    "ayahsCount": 15,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 92,
+    "name": "سورة اللَّيۡلِ",
+    "englishName": "Al-Lail",
+    "ayahsCount": 21,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 93,
+    "name": "سورة الضُّحَىٰ",
+    "englishName": "Ad-Dhuhaa",
+    "ayahsCount": 11,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 94,
+    "name": "سورة الشَّرۡحِ",
+    "englishName": "Ash-Sharh",
+    "ayahsCount": 8,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 95,
+    "name": "سورة التِّينِ",
+    "englishName": "At-Tin",
+    "ayahsCount": 8,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 96,
+    "name": "سورة العَلَقِ",
+    "englishName": "Al-Alaq",
+    "ayahsCount": 19,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 97,
+    "name": "سورة القَدۡرِ",
+    "englishName": "Al-Qadr",
+    "ayahsCount": 5,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 98,
+    "name": "سورة البَيِّنَةِ",
+    "englishName": "Al-Bayyina",
+    "ayahsCount": 8,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 99,
+    "name": "سورة الزَّلۡزَلَةِ",
+    "englishName": "Az-Zalzala",
+    "ayahsCount": 8,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 100,
+    "name": "سورة العَادِيَاتِ",
+    "englishName": "Al-Aadiyaat",
+    "ayahsCount": 11,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 101,
+    "name": "سورة القَارِعَةِ",
+    "englishName": "Al-Qaari'a",
+    "ayahsCount": 11,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 102,
+    "name": "سورة التَّكَاثُرِ",
+    "englishName": "At-Takaathur",
+    "ayahsCount": 8,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 103,
+    "name": "سورة العَصۡرِ",
+    "englishName": "Al-Asr",
+    "ayahsCount": 3,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 104,
+    "name": "سورة الهُمَزَةِ",
+    "englishName": "Al-Humaza",
+    "ayahsCount": 9,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 105,
+    "name": "سورة الفِيلِ",
+    "englishName": "Al-Fil",
+    "ayahsCount": 5,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 106,
+    "name": "سورة قُرَيۡشٍ",
+    "englishName": "Quraish",
+    "ayahsCount": 4,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 107,
+    "name": "سورة المَاعُونِ",
+    "englishName": "Al-Maa'un",
+    "ayahsCount": 7,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 108,
+    "name": "سورة الكَوۡثَرِ",
+    "englishName": "Al-Kawthar",
+    "ayahsCount": 3,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 109,
+    "name": "سورة الكَافِرُونَ",
+    "englishName": "Al-Kaafiroon",
+    "ayahsCount": 6,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 110,
+    "name": "سورة النَّصۡرِ",
+    "englishName": "An-Nasr",
+    "ayahsCount": 3,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 111,
+    "name": "سورة المَسَدِ",
+    "englishName": "Al-Masad",
+    "ayahsCount": 5,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 112,
+    "name": "سورة الإِخۡلَاصِ",
+    "englishName": "Al-Ikhlaas",
+    "ayahsCount": 4,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 113,
+    "name": "سورة الفَلَقِ",
+    "englishName": "Al-Falaq",
+    "ayahsCount": 5,
+    "category": "juz_30",
+    "juz": 30
+  },
+  {
+    "id": 114,
+    "name": "سورة النَّاسِ",
+    "englishName": "An-Naas",
+    "ayahsCount": 6,
+    "category": "juz_30",
+    "juz": 30
+  }
+]
