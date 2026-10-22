@@ -30,7 +30,7 @@ export function useAgora(channelId, userId, userName, isTeacher, isEnabled) {
       window.dispatchEvent(new CustomEvent('micstatechange', { detail: { isMicOn } }));
     }
     try {
-      const savedSpeakerBoost = parseFloat(localStorage.getItem('aljunaidi_speaker_boost') || '1.0');
+      const savedSpeakerBoost = parseFloat(localStorage.getItem('alwateen_speaker_boost') || '1.0');
       const baseVol = Math.floor(savedSpeakerBoost * 100);
       const finalVol = isMicOn ? Math.floor(baseVol * 1.45) : baseVol;
       agoraPeers.forEach(p => {
@@ -91,7 +91,7 @@ export function useAgora(channelId, userId, userName, isTeacher, isEnabled) {
         if (!audioTrack) return;
         audioTrack.play();
         try {
-          const savedSpeakerBoost = parseFloat(localStorage.getItem('aljunaidi_speaker_boost') || '1.0');
+          const savedSpeakerBoost = parseFloat(localStorage.getItem('alwateen_speaker_boost') || '1.0');
           // Agora volume range is 0 to 1000 (100 is default)
           const baseVol = Math.floor(savedSpeakerBoost * 100);
           const finalVol = isMicOnRef.current ? Math.floor(baseVol * 1.45) : baseVol;
@@ -235,11 +235,11 @@ export function useAgora(channelId, userId, userName, isTeacher, isEnabled) {
   const startAgoraAudio = async () => {
     if (!AgoraRTC || !clientRef.current || !joinedRef.current) return false;
     try {
-      const preferredMic = localStorage.getItem('aljunaidi_mic_id');
-      const echoCancel = localStorage.getItem('aljunaidi_echo_cancellation') !== 'false';
-      const noiseSuppress = localStorage.getItem('aljunaidi_noise_suppression') !== 'false';
-      const autoGain = localStorage.getItem('aljunaidi_auto_gain') !== 'false';
-      const savedBitrate = localStorage.getItem('aljunaidi_mic_bitrate') || '128';
+      const preferredMic = localStorage.getItem('alwateen_mic_id');
+      const echoCancel = localStorage.getItem('alwateen_echo_cancellation') !== 'false';
+      const noiseSuppress = localStorage.getItem('alwateen_noise_suppression') !== 'false';
+      const autoGain = localStorage.getItem('alwateen_auto_gain') !== 'false';
+      const savedBitrate = localStorage.getItem('alwateen_mic_bitrate') || '128';
 
       const trackConfig = {
         encoderConfig: savedBitrate === '192' ? "music_standard" : savedBitrate === '128' ? "speech_standard" : "speech_low_quality", 

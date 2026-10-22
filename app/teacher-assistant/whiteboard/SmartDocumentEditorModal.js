@@ -329,19 +329,19 @@ export default function SmartDocumentEditorModal({ isActive, onClose }) {
         </div>
 
         {loading && (
-          <div style={{ position: 'fixed', bottom: '30px', left: '50%', transform: 'translateX(-50%)', background: '#3b82f6', color: 'white', padding: '12px 25px', borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 10px 25px rgba(59, 130, 246, 0.4)', fontSize: '18px', fontWeight: 'bold', zIndex: 99999 }}>
-            <Loader2 size={24} className="spin" /> الذكاء الاصطناعي يقرأ ويكتب...
+          <div style={{ position: 'fixed', bottom: '30px', left: '50%', transform: 'translateX(-50%)', background: '#1A2E86', color: 'white', padding: '12px 25px', borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 10px 25px rgba(26, 46, 134, 0.4)', fontSize: '18px', fontWeight: 'bold', zIndex: 99999 }}>
+            <Loader2 size={24} className="spin" /> جاري تجهيز المستند وتنسيقه...
           </div>
         )}
       </div>
 
-      <style>{
+      <style>{`
         .spin { animation: spin 1s linear infinite; }
         .pulse { animation: pulse 2s infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
         [contenteditable]:empty:before { content: attr(placeholder); color: #94a3b8; pointer-events: none; display: block; }
-      }</style>
+      `}</style>
     </div>
   );
 }

@@ -40,7 +40,7 @@ export default function Login() {
         setError('تم تسجيل الخروج لأن حسابك تم فتحه من جهاز آخر. يرجى تسجيل الدخول مجدداً إذا أردت استخدام هذا الجهاز.')
       }
       try {
-        const saved = JSON.parse(localStorage.getItem('aljunaidi_fast_logins') || '[]')
+        const saved = JSON.parse(localStorage.getItem('alwateen_fast_logins') || '[]')
         setSavedAccounts(saved)
       } catch(e) {}
     }
@@ -102,7 +102,7 @@ export default function Login() {
       // 5. حفظ بيانات الدخول السريع (بيانات العرض فقط)
       if (isRememberMe) {
         try {
-          let saved = JSON.parse(localStorage.getItem('aljunaidi_fast_logins') || '[]')
+          let saved = JSON.parse(localStorage.getItem('alwateen_fast_logins') || '[]')
           const existingIdx = saved.findIndex(a => a.email === data.user.email)
           const newAccount = {
             email: data.user.email,
@@ -112,7 +112,7 @@ export default function Login() {
           }
           if (existingIdx >= 0) saved[existingIdx] = newAccount
           else saved.push(newAccount)
-          localStorage.setItem('aljunaidi_fast_logins', JSON.stringify(saved))
+          localStorage.setItem('alwateen_fast_logins', JSON.stringify(saved))
         } catch(e) {}
       }
 
@@ -155,7 +155,7 @@ export default function Login() {
   const removeSavedAccount = (email) => {
     const updated = savedAccounts.filter(a => a.email !== email)
     setSavedAccounts(updated)
-    localStorage.setItem('aljunaidi_fast_logins', JSON.stringify(updated))
+    localStorage.setItem('alwateen_fast_logins', JSON.stringify(updated))
   }
 
   return (

@@ -98,10 +98,10 @@ export default function LiveBottomBar({
       // 2. Get mic audio with preferred device & noise cancellation
       let micStream = null
       try {
-        const preferredMic = typeof window !== 'undefined' ? localStorage.getItem('aljunaidi_mic_id') : null
-        const echoCancel = typeof window !== 'undefined' ? localStorage.getItem('aljunaidi_echo_cancellation') !== 'false' : true
-        const noiseSuppress = typeof window !== 'undefined' ? localStorage.getItem('aljunaidi_noise_suppression') !== 'false' : true
-        const autoGain = typeof window !== 'undefined' ? localStorage.getItem('aljunaidi_auto_gain') !== 'false' : true
+        const preferredMic = typeof window !== 'undefined' ? localStorage.getItem('alwateen_mic_id') : null
+        const echoCancel = typeof window !== 'undefined' ? localStorage.getItem('alwateen_echo_cancellation') !== 'false' : true
+        const noiseSuppress = typeof window !== 'undefined' ? localStorage.getItem('alwateen_noise_suppression') !== 'false' : true
+        const autoGain = typeof window !== 'undefined' ? localStorage.getItem('alwateen_auto_gain') !== 'false' : true
 
         micStream = await navigator.mediaDevices.getUserMedia({
           audio: {

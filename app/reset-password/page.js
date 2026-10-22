@@ -65,13 +65,13 @@ export default function ResetPassword() {
       setSuccess(true)
       
       // Update saved accounts if it exists in fast login
-      const saved = JSON.parse(localStorage.getItem('aljunaidi_fast_logins') || '[]')
+      const saved = JSON.parse(localStorage.getItem('alwateen_fast_logins') || '[]')
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
         const existingIdx = saved.findIndex(a => a.email === user.email)
         if (existingIdx >= 0) {
           saved[existingIdx].token = btoa(encodeURIComponent(password))
-          localStorage.setItem('aljunaidi_fast_logins', JSON.stringify(saved))
+          localStorage.setItem('alwateen_fast_logins', JSON.stringify(saved))
         }
       }
 

@@ -16,7 +16,7 @@ export const RemoteAudio = ({ stream }) => {
 
     // Helper to calculate total volume with Anti-Ducking Compensation
     const getEffectiveVolume = (baseBoost, micActive) => {
-      const boost = typeof baseBoost === 'number' ? baseBoost : parseFloat(localStorage.getItem('aljunaidi_speaker_boost') || '1.0');
+      const boost = typeof baseBoost === 'number' ? baseBoost : parseFloat(localStorage.getItem('alwateen_speaker_boost') || '1.0');
       // If user's microphone is open, compensate by +45% to counter OS/browser ducking!
       const compensation = micActive ? 1.45 : 1.0;
       return boost * compensation;

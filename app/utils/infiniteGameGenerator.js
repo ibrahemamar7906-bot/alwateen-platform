@@ -1,5 +1,5 @@
 /**
- * Infinite Game Generator Engine for Al-Gonady Platform
+ * Infinite Game Generator Engine for Al-Wateen Platform
  * Provides endless, procedural generation of high-quality educational content:
  * - Arabic: CVC & 3-4 letter words with Tashkeel, Phonics, Missing letters, Antonyms
  * - English: CVC word families, sight words, phonics, missing vowels/consonants

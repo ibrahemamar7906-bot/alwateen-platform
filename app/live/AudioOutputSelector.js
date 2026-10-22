@@ -53,16 +53,16 @@ export default function AudioOutputSelector({ isDark = true }) {
 
   useEffect(() => {
     // Load initial settings
-    setSpeakerBoost(parseFloat(localStorage.getItem('aljunaidi_speaker_boost') || '1.0'))
-    setMicBoost(parseFloat(localStorage.getItem('aljunaidi_mic_boost') || '1.0'))
+    setSpeakerBoost(parseFloat(localStorage.getItem('alwateen_speaker_boost') || '1.0'))
+    setMicBoost(parseFloat(localStorage.getItem('alwateen_mic_boost') || '1.0'))
     
-    const savedMic = localStorage.getItem('aljunaidi_mic_id')
+    const savedMic = localStorage.getItem('alwateen_mic_id')
     if (savedMic) setSelectedMicId(savedMic)
     
-    const savedSink = localStorage.getItem('aljunaidi_sink_id')
+    const savedSink = localStorage.getItem('alwateen_sink_id')
     if (savedSink) {
       if (savedSink === 'communications' || savedSink === 'undefined') {
-        localStorage.removeItem('aljunaidi_sink_id')
+        localStorage.removeItem('alwateen_sink_id')
         setSelectedSinkId('default')
         currentGlobalSinkId = 'default'
       } else {
@@ -72,10 +72,10 @@ export default function AudioOutputSelector({ isDark = true }) {
     }
 
     // Load DSP preferences
-    setEchoCancellation(localStorage.getItem('aljunaidi_echo_cancellation') !== 'false')
-    setNoiseSuppression(localStorage.getItem('aljunaidi_noise_suppression') !== 'false')
-    setAutoGainControl(localStorage.getItem('aljunaidi_auto_gain') !== 'false')
-    setQualityBitrate(localStorage.getItem('aljunaidi_mic_bitrate') || '128')
+    setEchoCancellation(localStorage.getItem('alwateen_echo_cancellation') !== 'false')
+    setNoiseSuppression(localStorage.getItem('alwateen_noise_suppression') !== 'false')
+    setAutoGainControl(localStorage.getItem('alwateen_auto_gain') !== 'false')
+    setQualityBitrate(localStorage.getItem('alwateen_mic_bitrate') || '128')
   }, [])
 
   // Cleanup mic test on modal close or unmount
@@ -91,40 +91,40 @@ export default function AudioOutputSelector({ isDark = true }) {
 
   const handleSpeakerBoostChange = (val) => {
     setSpeakerBoost(val)
-    localStorage.setItem('aljunaidi_speaker_boost', val)
+    localStorage.setItem('alwateen_speaker_boost', val)
     window.dispatchEvent(new CustomEvent('speakervolumechange', { detail: { volume: val } }))
   }
 
   const handleMicBoostChange = (val) => {
     setMicBoost(val)
-    localStorage.setItem('aljunaidi_mic_boost', val)
+    localStorage.setItem('alwateen_mic_boost', val)
     window.dispatchEvent(new CustomEvent('micvolumechange', { detail: { volume: val } }))
   }
 
   const handleToggleEcho = () => {
     const next = !echoCancellation
     setEchoCancellation(next)
-    localStorage.setItem('aljunaidi_echo_cancellation', next ? 'true' : 'false')
+    localStorage.setItem('alwateen_echo_cancellation', next ? 'true' : 'false')
     notifyMicConfigChange({ echoCancellation: next, noiseSuppression, autoGainControl, bitrate: qualityBitrate })
   }
 
   const handleToggleNoise = () => {
     const next = !noiseSuppression
     setNoiseSuppression(next)
-    localStorage.setItem('aljunaidi_noise_suppression', next ? 'true' : 'false')
+    localStorage.setItem('alwateen_noise_suppression', next ? 'true' : 'false')
     notifyMicConfigChange({ echoCancellation, noiseSuppression: next, autoGainControl, bitrate: qualityBitrate })
   }
 
   const handleToggleAutoGain = () => {
     const next = !autoGainControl
     setAutoGainControl(next)
-    localStorage.setItem('aljunaidi_auto_gain', next ? 'true' : 'false')
+    localStorage.setItem('alwateen_auto_gain', next ? 'true' : 'false')
     notifyMicConfigChange({ echoCancellation, noiseSuppression, autoGainControl: next, bitrate: qualityBitrate })
   }
 
   const handleBitrateChange = (val) => {
     setQualityBitrate(val)
-    localStorage.setItem('aljunaidi_mic_bitrate', val)
+    localStorage.setItem('alwateen_mic_bitrate', val)
     notifyMicConfigChange({ echoCancellation, noiseSuppression, autoGainControl, bitrate: val })
   }
 
@@ -175,9 +175,9 @@ export default function AudioOutputSelector({ isDark = true }) {
     setSelectedSinkId(safeId)
     currentGlobalSinkId = safeId
     if (safeId === 'default') {
-      localStorage.removeItem('aljunaidi_sink_id')
+      localStorage.removeItem('alwateen_sink_id')
     } else {
-      localStorage.setItem('aljunaidi_sink_id', safeId)
+      localStorage.setItem('alwateen_sink_id', safeId)
     }
 
     const allAudios = document.querySelectorAll('audio, video')
@@ -190,7 +190,7 @@ export default function AudioOutputSelector({ isDark = true }) {
 
   const handleSelectInput = async (deviceId) => {
     setSelectedMicId(deviceId)
-    localStorage.setItem('aljunaidi_mic_id', deviceId)
+    localStorage.setItem('alwateen_mic_id', deviceId)
     window.dispatchEvent(new CustomEvent('micdevicechange', { detail: { deviceId } }))
     
     // If mic test is currently running, switch to new device

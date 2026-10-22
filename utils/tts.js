@@ -1,5 +1,5 @@
-﻿/**
- * Centralized Audio & TTS Engine for Al-Gonady Platform
+/**
+ * Centralized Audio & TTS Engine for Al-Wateen Platform
  * 1. Primary: Next.js /api/tts endpoint (Google Studio TTS, high compatibility across all OS & browsers)
  * 2. Secondary: ResponsiveVoice (Arabic Male / English Female)
  * 3. Tertiary: Browser Web Speech API (SpeechSynthesis)

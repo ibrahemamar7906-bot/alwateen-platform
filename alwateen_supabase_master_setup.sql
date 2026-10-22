@@ -122,6 +122,7 @@ FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 -- ==============================================================================
 CREATE TABLE IF NOT EXISTS public.courses (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    course_id TEXT,
     title TEXT NOT NULL,
     description TEXT,
     stage TEXT NOT NULL,
@@ -156,6 +157,7 @@ CREATE TABLE IF NOT EXISTS public.student_progress (
     lesson_id UUID REFERENCES public.lessons(id) ON DELETE CASCADE,
     completed BOOLEAN DEFAULT true,
     completed_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     UNIQUE(student_id, lesson_id)
 );
 
@@ -173,6 +175,8 @@ CREATE TABLE IF NOT EXISTS public.live_rooms (
     title TEXT NOT NULL,
     stage TEXT,
     channel_name TEXT NOT NULL,
+    room_code TEXT,
+    deck_id UUID REFERENCES public.flashcard_decks(id) ON DELETE SET NULL,
     host_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
     is_active BOOLEAN DEFAULT false,
     room_type TEXT DEFAULT 'normal',
@@ -188,7 +192,18 @@ CREATE TABLE IF NOT EXISTS public.homework_submissions (
     status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'graded', 'rejected')),
     grade TEXT,
     feedback TEXT,
-    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.lesson_questions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    lesson_id UUID REFERENCES public.lessons(id) ON DELETE CASCADE,
+    student_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    question TEXT NOT NULL,
+    answer TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 -- ==============================================================================
@@ -246,7 +261,8 @@ CREATE TABLE IF NOT EXISTS public.quiz_submissions (
     score NUMERIC DEFAULT 0,
     total_questions INTEGER DEFAULT 0,
     answers JSONB DEFAULT '{}'::jsonb,
-    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 -- ==============================================================================
@@ -257,6 +273,7 @@ CREATE TABLE IF NOT EXISTS public.community_posts (
     author_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
     image_url TEXT,
+    stage TEXT,
     likes_count INTEGER DEFAULT 0,
     comments_count INTEGER DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -310,7 +327,10 @@ CREATE TABLE IF NOT EXISTS public.battles (
 CREATE TABLE IF NOT EXISTS public.game_scores (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     student_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
-    game_id TEXT NOT NULL,
+    student_name TEXT,
+    subject TEXT,
+    game_id TEXT,
+    game_name TEXT,
     score INTEGER NOT NULL DEFAULT 0,
     stage TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -321,7 +341,8 @@ CREATE TABLE IF NOT EXISTS public.flashcard_decks (
     teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     stage TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public.flashcards (
@@ -362,7 +383,11 @@ CREATE TABLE IF NOT EXISTS public.student_inference_progress (
 CREATE TABLE IF NOT EXISTS public.student_performance (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     student_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    game_name TEXT,
+    mistake_item TEXT,
     data JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
@@ -428,6 +453,7 @@ CREATE TABLE IF NOT EXISTS public.teacher_exams (
     teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     group_id UUID REFERENCES public.teacher_groups(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
+    exam_name TEXT,
     max_score NUMERIC DEFAULT 100,
     exam_date DATE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -467,7 +493,8 @@ CREATE TABLE IF NOT EXISTS public.teacher_schedules (
     end_time TEXT,
     group_name TEXT,
     room TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public.teacher_sessions (
@@ -485,7 +512,8 @@ CREATE TABLE IF NOT EXISTS public.teacher_rosters (
     teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     title TEXT,
     data JSONB DEFAULT '{}'::jsonb,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public.teacher_question_banks (
@@ -494,7 +522,8 @@ CREATE TABLE IF NOT EXISTS public.teacher_question_banks (
     title TEXT NOT NULL,
     stage TEXT,
     questions JSONB DEFAULT '[]'::jsonb,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public.teacher_quizzes (
@@ -502,8 +531,11 @@ CREATE TABLE IF NOT EXISTS public.teacher_quizzes (
     teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     stage TEXT,
+    is_active BOOLEAN DEFAULT true,
+    quiz_id TEXT,
     questions JSONB DEFAULT '[]'::jsonb,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 -- ==============================================================================
@@ -775,6 +807,7 @@ ALTER TABLE public.teacher_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.teacher_rosters ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.teacher_question_banks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.teacher_quizzes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lesson_questions ENABLE ROW LEVEL SECURITY;
 
 -- 1. سياسات جدول البروفايل (Profiles Policies - بدون تكرار لانهائي)
 DROP POLICY IF EXISTS "Public can view basic profiles" ON public.profiles;
@@ -920,6 +953,54 @@ DROP POLICY IF EXISTS "Public view live rooms" ON public.live_rooms;
 DROP POLICY IF EXISTS "Admins manage live rooms" ON public.live_rooms;
 CREATE POLICY "Public view live rooms" ON public.live_rooms FOR SELECT USING (true);
 CREATE POLICY "Admins manage live rooms" ON public.live_rooms FOR ALL USING (public.get_my_role() IN ('admin', 'teacher'));
+
+DROP POLICY IF EXISTS "Authenticated view lesson questions" ON public.lesson_questions;
+DROP POLICY IF EXISTS "Students post lesson questions" ON public.lesson_questions;
+DROP POLICY IF EXISTS "Teachers answer lesson questions" ON public.lesson_questions;
+DROP POLICY IF EXISTS "Users delete own lesson questions" ON public.lesson_questions;
+CREATE POLICY "Authenticated view lesson questions" ON public.lesson_questions FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Students post lesson questions" ON public.lesson_questions FOR INSERT TO authenticated WITH CHECK (student_id = auth.uid());
+CREATE POLICY "Teachers answer lesson questions" ON public.lesson_questions FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Users delete own lesson questions" ON public.lesson_questions FOR DELETE TO authenticated USING (student_id = auth.uid() OR public.get_my_role() IN ('admin', 'teacher'));
+
+-- دالة احتياطية لتحديث النقاط أو العمليات التوافقية (Legacy Compatibility)
+CREATE OR REPLACE FUNCTION public.topup_ai_credits(target_user_id UUID, amount NUMERIC)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+BEGIN
+  UPDATE public.profiles
+  SET points = COALESCE(points, 0) + amount::INTEGER
+  WHERE id = target_user_id;
+END;
+$$;
+
+-- دالة تحديث نقاط ومستوى الطالب (Add Student Points & Level)
+CREATE OR REPLACE FUNCTION public.add_student_points(p_user_id UUID, p_points_to_add INTEGER)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_new_points INTEGER;
+    v_new_level INTEGER;
+BEGIN
+    UPDATE public.profiles
+    SET points = COALESCE(points, 0) + p_points_to_add,
+        level = GREATEST(1, FLOOR((COALESCE(points, 0) + p_points_to_add) / 100) + 1)
+    WHERE id = p_user_id
+    RETURNING points, level INTO v_new_points, v_new_level;
+
+    RETURN jsonb_build_object(
+        'success', true,
+        'newPoints', v_new_points,
+        'newLevel', v_new_level
+    );
+END;
+$$;
 
 -- ==============================================================================
 -- انتهى إعداد قاعدة بيانات منصة الوتين التعليمية بنجاح!

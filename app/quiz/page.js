@@ -98,7 +98,7 @@ function QuizContent() {
       return
     }
 
-    if (localStorage.getItem(`aljunaidi_quiz_${id}`)) {
+    if (localStorage.getItem(`alwateen_quiz_${id}`)) {
       setStatus('blocked')
     } else {
       fetchQuizData()
@@ -264,11 +264,11 @@ function QuizContent() {
   }
 
   const saveSubmission = async (name, calculatedScore, currentAnswers, totalQs) => {
-    localStorage.setItem(`aljunaidi_quiz_${id}`, 'submitted')
+    localStorage.setItem(`alwateen_quiz_${id}`, 'submitted')
     
     let userProfile = null
     try {
-      const stored = localStorage.getItem('aljunaidi_userProfile')
+      const stored = localStorage.getItem('alwateen_userProfile')
       if (stored) userProfile = JSON.parse(stored)
     } catch(e) {}
     

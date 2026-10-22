@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Bold, Italic, Underline, Strikethrough, Superscript, Subscript, 
@@ -7916,7 +7916,7 @@ export default function DocumentEditorPage() {
     setTimeout(rebalanceAllPages, 80);
   };
 
-  // AI Logic Actions (Specialized for Mr. Abdullah Al-Junaidi & Egyptian Arabic Curriculum)
+  // Logic Actions (Specialized for Al-Wateen Platform & Egyptian Arabic Curriculum)
   const callAI = async (promptType, customPromptText = '', forceWholeDocument = false) => {
     const isDocWide = forceWholeDocument || isAllPagesSelected;
     const { selectedText, contextText, isCrossPage, crossSelection } = getSmartContext();
@@ -8350,7 +8350,7 @@ export default function DocumentEditorPage() {
     insertChatToDocument(cleanHtml);
   };
 
-  // Multimodal & Multi-Turn AI Chat Assistant (Specialized for Mr. Abdullah Al-Junaidi)
+  // Multimodal & Multi-Turn Chat Assistant (Specialized for Al-Wateen Platform)
   const handleChatSubmit = async (e) => {
     e.preventDefault();
     const currentImgs = [...chatImages];

@@ -1,4 +1,4 @@
-﻿name: Build iOS App
+name: Build iOS App
 
 on:
   workflow_dispatch:
@@ -55,5 +55,5 @@ jobs:
       - name: Upload iOS Archive
         uses: actions/upload-artifact@v4
         with:
-          name: elgonady-ios-archive
+          name: alwateen-ios-archive
           path: ios/App/build/App.xcarchive

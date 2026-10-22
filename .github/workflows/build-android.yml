@@ -1,4 +1,4 @@
-﻿name: Build Android App (APK)
+name: Build Android App (APK)
 
 on:
   workflow_dispatch: # This allows you to manually trigger the build from GitHub UI
@@ -48,7 +48,7 @@ jobs:
           
       - name: Fix Arabic App Name
         run: |
-          sed -i 's/<string name="app_name">.*<\/string>/<string name="app_name">منصة الجنيدي<\/string>/' android/app/src/main/res/values/strings.xml
+          sed -i 's/<string name="app_name">.*<\/string>/<string name="app_name">منصة الوتين<\/string>/' android/app/src/main/res/values/strings.xml
 
       - name: Patch Android Permissions
         run: node scripts/patch-android.js
@@ -65,5 +65,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: elgonady-app-debug.apk
+          name: alwateen-app-debug.apk
           path: android/app/build/outputs/apk/debug/app-debug.apk

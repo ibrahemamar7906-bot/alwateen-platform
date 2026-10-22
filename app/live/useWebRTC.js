@@ -32,7 +32,7 @@ const optimizeSdpForMobileNetworks = (sdp) => {
   // Dynamic audio bitrate from user preference (default 32kbps mono, or 64kbps/128kbps)
   let maxBitrate = 32000;
   try {
-    const savedBitrate = typeof window !== 'undefined' ? localStorage.getItem('aljunaidi_mic_bitrate') : null;
+    const savedBitrate = typeof window !== 'undefined' ? localStorage.getItem('alwateen_mic_bitrate') : null;
     if (savedBitrate === '192') maxBitrate = 128000;
     else if (savedBitrate === '128') maxBitrate = 64000;
     else if (savedBitrate === '64') maxBitrate = 32000;
@@ -484,10 +484,10 @@ export function useWebRTC(channel, userId, userName, isTeacher, isEnabled = true
     try {
       let stream = null;
       try {
-        const preferredMic = localStorage.getItem('aljunaidi_mic_id');
-        const echoCancel = localStorage.getItem('aljunaidi_echo_cancellation') !== 'false';
-        const noiseSuppress = localStorage.getItem('aljunaidi_noise_suppression') !== 'false';
-        const autoGain = localStorage.getItem('aljunaidi_auto_gain') !== 'false';
+        const preferredMic = localStorage.getItem('alwateen_mic_id');
+        const echoCancel = localStorage.getItem('alwateen_echo_cancellation') !== 'false';
+        const noiseSuppress = localStorage.getItem('alwateen_noise_suppression') !== 'false';
+        const autoGain = localStorage.getItem('alwateen_auto_gain') !== 'false';
 
         let audioConfig = { 
           echoCancellation: echoCancel, 
@@ -542,7 +542,7 @@ export function useWebRTC(channel, userId, userName, isTeacher, isEnabled = true
 
       // --- ADVANCED MIC BOOST USING WEB AUDIO API ---
       try {
-        const savedMicBoost = parseFloat(localStorage.getItem('aljunaidi_mic_boost') || '1.0');
+        const savedMicBoost = parseFloat(localStorage.getItem('alwateen_mic_boost') || '1.0');
         if (savedMicBoost > 1.0) {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           if (AudioCtx) {

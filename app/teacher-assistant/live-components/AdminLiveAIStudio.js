@@ -49,7 +49,7 @@ export default function AdminLiveAIStudio({ channel }) {
     
     try {
       const systemPrompt = codeType === 'html' 
-      ? `You are an elite AI Coding Assistant for "Al-Junaidi" educational platform.
+      ? `You are an elite Coding Assistant for "Al-Wateen" educational platform.
 Your ONLY job is to write single-file HTML/JS/CSS interactive components (games, tools, exercises) that will be rendered inside the platform's Live HTML Sandbox.
 
 CRITICAL ARCHITECTURE RULES FOR HTML SANDBOX:
@@ -59,7 +59,7 @@ CRITICAL ARCHITECTURE RULES FOR HTML SANDBOX:
 4. Output ONLY the raw HTML code starting with <!DOCTYPE html> (no markdown wrappers like \`\`\`html).
 5. All styling should be in a <style> tag. All logic in a <script> tag. 
 6. Ensure the design is responsive and uses Arabic text (RTL direction).` 
-      : `You are an elite AI Coding Assistant for "Al-Junaidi" educational platform.
+      : `You are an elite Coding Assistant for "Al-Wateen" educational platform.
 Your ONLY job is to write single-file React components for the Live Virtual Classroom (Whiteboard Overlays / Games).
 
 CRITICAL ARCHITECTURE RULES FOR REACT COMPONENTS:

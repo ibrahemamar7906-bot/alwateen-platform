@@ -2140,7 +2140,7 @@ export default function LiveWhiteboardStudent({ channel, hasControl, studentName
   const addMathEquation = () => {
     if (!canvas || !mathInput.trim()) return;
     const cleanColor = (color || '#1e293b').replace('#', '');
-    const url = `https://latex.codecogs.com/png.image?\dpi{300}${encodeURIComponent(`\color[HTML]{${cleanColor}} ${mathInput.trim()}`)}`;
+    const url = `https://latex.codecogs.com/png.image?\\dpi{300}${encodeURIComponent(`\\color[HTML]{${cleanColor}} ${mathInput.trim()}`)}`;
     fabric.Image.fromURL(url, (img) => {
       if (!img) return;
       img.set({ ...getCenter(), originX: 'center', originY: 'center', scaleX: 0.6, scaleY: 0.6, selectable: true, evented: true, hasControls: true });
