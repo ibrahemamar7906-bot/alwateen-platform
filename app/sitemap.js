@@ -29,7 +29,7 @@ export default function sitemap() {
   ]
 
   return routes.map(r => ({
-    url: ${baseUrl},
+    url: baseUrl + r.path,
     lastModified: now,
     changeFrequency: r.changeFrequency,
     priority: r.priority,
