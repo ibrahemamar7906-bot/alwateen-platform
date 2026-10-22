@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
@@ -14,11 +14,6 @@ export default function PwaInstallPrompt() {
   const [showBanner, setShowBanner] = useState(false)
   const [showIOSGuide, setShowIOSGuide] = useState(false)
   const [installedSuccess, setInstalledSuccess] = useState(false)
-
-  // Hide PWA prompt completely when inside whiteboard, document editor, or live classroom
-  if (pathname && (pathname.includes('whiteboard') || pathname.includes('document-editor') || pathname.includes('virtual-classroom') || pathname.includes('/live'))) {
-    return null
-  }
 
   useEffect(() => {
     setMounted(true)
@@ -122,11 +117,18 @@ export default function PwaInstallPrompt() {
     localStorage.setItem('pwa_prompt_dismissed_until', expireTime.toString())
   }
 
-  if (!mounted || isStandalone) return null
+  const isHiddenRoute = pathname && (
+    pathname.includes('whiteboard') || 
+    pathname.includes('document-editor') || 
+    pathname.includes('virtual-classroom') || 
+    pathname.includes('/live')
+  )
+
+  if (!mounted || isStandalone || isHiddenRoute) return null
 
   return (
     <>
-      {/* ── Success Toast ── */}
+      {/* ?? Success Toast ?? */}
       {installedSuccess && (
         <div className="no-print" style={{
           position: 'fixed',
@@ -147,11 +149,11 @@ export default function PwaInstallPrompt() {
           direction: 'rtl'
         }}>
           <CheckCircle size={20} />
-          <span>تم تثبيت تطبيق منصة الوتين بنجاح! 🎉</span>
+          <span>تم تثبيت تطبيق منصة الوتين بنجاح! ??</span>
         </div>
       )}
 
-      {/* ── Floating Smart Install Banner ── */}
+      {/* ?? Floating Smart Install Banner ?? */}
       {showBanner && (
         <div className="pwa-floating-banner no-print" style={{
           position: 'fixed',
@@ -210,12 +212,12 @@ export default function PwaInstallPrompt() {
               boxShadow: '0 6px 16px rgba(5,150,105,0.3)',
               flexShrink: 0
             }}>
-              📲
+              ??
             </div>
 
             <div style={{ flex: 1, paddingLeft: '24px' }}>
               <div style={{ fontWeight: 900, fontSize: '1rem', color: '#064e3b', marginBottom: '2px' }}>
-                تثبيت منصة الوتين كتطبيق 🚀
+                تثبيت منصة الوتين كتطبيق ??
               </div>
               <div style={{ fontSize: '0.82rem', color: '#475569', fontWeight: 600, lineHeight: 1.35 }}>
                 تصفح فائق السرعة، ملء الشاشة، وتجربة سلسة بضغطة زر دون الحاجة للمتصفح!
@@ -246,7 +248,7 @@ export default function PwaInstallPrompt() {
               }}
             >
               <Download size={18} />
-              <span>تثبيت التطبيق الآن ⚡</span>
+              <span>تثبيت التطبيق الآن ?</span>
             </button>
 
             <button
@@ -268,7 +270,7 @@ export default function PwaInstallPrompt() {
         </div>
       )}
 
-      {/* ── Persistent Floating Install Mini Badge (When Banner is Dismissed) ── */}
+      {/* ?? Persistent Floating Install Mini Badge (When Banner is Dismissed) ?? */}
       {!showBanner && !isStandalone && (deferredPrompt || isIOS) && (
         <button
           className="pwa-floating-banner no-print"
@@ -298,11 +300,11 @@ export default function PwaInstallPrompt() {
           title="تثبيت المنصة كتطبيق على جهازك"
         >
           <Smartphone size={18} />
-          <span>تثبيت التطبيق 📲</span>
+          <span>تثبيت التطبيق ??</span>
         </button>
       )}
 
-      {/* ── iOS / Safari Step-by-Step Installation Modal ── */}
+      {/* ?? iOS / Safari Step-by-Step Installation Modal ?? */}
       {showIOSGuide && (
         <div className="no-print" style={{
           position: 'fixed',
@@ -352,7 +354,7 @@ export default function PwaInstallPrompt() {
             </button>
 
             <div style={{ textAlign: 'center', marginBottom: '18px' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '6px' }}>📲</div>
+              <div style={{ fontSize: '2.5rem', marginBottom: '6px' }}>??</div>
               <h3 style={{ margin: '0 0 6px 0', fontSize: '1.3rem', fontWeight: 900, color: '#064e3b' }}>
                 تثبيت المنصة على الآيفون / الآيباد
               </h3>
@@ -368,7 +370,7 @@ export default function PwaInstallPrompt() {
                   <Share size={18} />
                 </div>
                 <div style={{ fontSize: '0.88rem', color: '#1e293b', fontWeight: 800 }}>
-                  1. اضغط على زر المشاركة <strong>(Share)</strong> أسفل المتصفح في Safari ⎋.
+                  1. اضغط على زر المشاركة <strong>(Share)</strong> أسفل المتصفح في Safari ?.
                 </div>
               </div>
 
@@ -377,13 +379,13 @@ export default function PwaInstallPrompt() {
                   <PlusSquare size={18} />
                 </div>
                 <div style={{ fontSize: '0.88rem', color: '#1e293b', fontWeight: 800 }}>
-                  2. مرر للأسفل واختر <strong>«إضافة إلى الصفحة الرئيسية»</strong> (Add to Home Screen ➕).
+                  2. مرر للأسفل واختر <strong>«إضافة إلى الصفحة الرئيسية»</strong> (Add to Home Screen ?).
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#f8fafc', padding: '12px 14px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
                 <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#fef3c7', color: '#b45309', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, flexShrink: 0 }}>
-                  ✓
+                  ?
                 </div>
                 <div style={{ fontSize: '0.88rem', color: '#1e293b', fontWeight: 800 }}>
                   3. اضغط <strong>«إضافة» (Add)</strong> في أعلى الزاوية ليظهر التطبيق في شاشتك فوراً!
@@ -406,13 +408,13 @@ export default function PwaInstallPrompt() {
                 boxShadow: '0 4px 14px rgba(5,150,105,0.3)'
               }}
             >
-              فهمت، شكراً لك! 👍
+              فهمت، شكراً لك! ??
             </button>
           </div>
         </div>
       )}
 
-      {/* ── CSS Keyframes ── */}
+      {/* ?? CSS Keyframes ?? */}
       <style>{`
         @keyframes pwaSlideUp {
           from { opacity: 0; transform: translateY(30px); }

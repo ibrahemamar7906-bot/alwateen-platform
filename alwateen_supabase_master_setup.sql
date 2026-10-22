@@ -170,6 +170,29 @@ CREATE TABLE IF NOT EXISTS public.handouts (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
+
+CREATE TABLE IF NOT EXISTS public.flashcard_decks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    title TEXT NOT NULL,
+    stage TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.flashcards (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    deck_id UUID REFERENCES public.flashcard_decks(id) ON DELETE CASCADE,
+    teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    title TEXT,
+    rule TEXT,
+    example1 TEXT,
+    example2 TEXT,
+    theme TEXT,
+    custom_color TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS public.live_rooms (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
@@ -336,27 +359,6 @@ CREATE TABLE IF NOT EXISTS public.game_scores (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS public.flashcard_decks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
-    title TEXT NOT NULL,
-    stage TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS public.flashcards (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    deck_id UUID REFERENCES public.flashcard_decks(id) ON DELETE CASCADE,
-    teacher_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
-    title TEXT,
-    rule TEXT,
-    example1 TEXT,
-    example2 TEXT,
-    theme TEXT,
-    custom_color TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS public.student_grammar_progress (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
