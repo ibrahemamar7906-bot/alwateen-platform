@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import Link from 'next/link'
 import { Mail, Phone, MapPin, Sparkles, Heart } from 'lucide-react'
 
@@ -74,13 +74,13 @@ export default function Footer() {
           <h3 style={{ fontSize: '1.15rem', marginBottom: '18px', color: '#1e293b', fontWeight: 800 }}>تواصل معنا</h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#475569', fontSize: '0.9rem' }}>
-              <MapPin size={18} color="#1A2E86" /> مصر - المنوفية - شبين الكوم
+              <MapPin size={18} color="#1A2E86" /> مصر - المنوفية - أشمون
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#475569', fontSize: '0.9rem' }}>
               <Phone size={18} color="#1A2E86" /> 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <span style={{ fontSize: '0.75rem', color: '#64748b' }}>اتصال وواتساب:</span>
-                <a href="tel:+201507952002" style={{ color: '#1A2E86', textDecoration: 'none', fontWeight: 'bold' }} dir="ltr">+20 150 795 2002</a>
+                <a href="tel:+201010407906" style={{ color: '#1A2E86', textDecoration: 'none', fontWeight: 'bold' }} dir="ltr">+20 101 040 7906</a>
               </div>
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#475569', fontSize: '0.9rem' }}>

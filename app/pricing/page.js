@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -84,7 +84,7 @@ export default function PricingPage() {
     const text = encodeURIComponent(
       `السلام عليكم يا المستر إبراهيم عمار، أنا (${userName}) وأرغب في الاشتراك وتفعيل (${planName} - ${duration} بقيمة ${price} ج.م) عبر منصة الوتين التعليمية.\nمرفق لسيادتكم إيصال التحويل للتفعيل فوراً.`
     )
-    return `https://wa.me/201507952002?text=${text}`
+    return `https://wa.me/201010407906?text=${text}`
   }
 
   return (
@@ -318,7 +318,7 @@ export default function PricingPage() {
           }}>
             <span style={{ fontWeight: 800, color: '#0f172a', fontSize: '0.9rem' }}>أرقام فودافون كاش وإنستاباي المعتمدة:</span>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['01507952002'].map(num => (
+              {['01010407906'].map(num => (
                 <button
                   key={num}
                   onClick={() => copyToClipboard(num)}
@@ -904,7 +904,7 @@ export default function PricingPage() {
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '30px' }}>
             <a 
-              href="https://wa.me/201507952002" 
+              href="https://wa.me/201010407906" 
               target="_blank" 
               rel="noopener noreferrer" 
               style={{ 
@@ -921,10 +921,10 @@ export default function PricingPage() {
               }}
             >
               <MessageCircle size={20} />
-              <span>محادثة واتساب مباشرة (01507952002)</span>
+              <span>محادثة واتساب مباشرة (01010407906)</span>
             </a>
             <a 
-              href="tel:01507952002" 
+              href="tel:01010407906" 
               style={{ 
                 display: 'inline-flex', 
                 alignItems: 'center', 

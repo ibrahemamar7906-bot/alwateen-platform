@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -135,7 +135,7 @@ export default function Register() {
             <p style={{margin: 0, fontWeight: 700, color: '#064e3b'}}>
               لتأكيد الحساب وتفعيل الباقات المدفوعة فوراً، يرجى التواصل معنا عبر الواتساب:
             </p>
-            <a href="https://wa.me/201507952002" target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
+            <a href="https://wa.me/201010407906" target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
               <MessageCircle size={20} />
               <span>تواصل عبر الواتساب مباشرة</span>
             </a>

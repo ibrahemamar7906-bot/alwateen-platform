@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabase'
@@ -77,23 +77,37 @@ export default function Home() {
     alternateName: 'Al-Wateen Educational Platform',
     url: 'https://alwateen.com',
     logo: 'https://alwateen.com/logo.png',
-    description: 'منصة تعليمية تفاعلية تقدم نظام بث مباشر (لايف) متكامل، أدوات ذكية واحترافية للمعلمين، وكورسات تأسيس اللغة العربية.',
-    telephone: '+201507952002',
+    description: 'منصة الوتين التعليمية بإشراف المستر إبراهيم عمار - أشمون، المنوفية. المنصة الرائدة لتعليم اللغة العربية لجميع مراحل العام والأزهر، مع فصول تفاعلية مباشرة وسبورة ذكية متقدمة.',
+    telephone: '+201010407906',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'شبين الكوم',
+      addressLocality: 'أشمون',
       addressRegion: 'المنوفية',
       addressCountry: 'EG'
     },
-    sameAs: ['https://wa.me/201507952002'],
+    founder: {
+      '@type': 'Person',
+      name: 'المستر إبراهيم عمار',
+      jobTitle: 'معلم أول لغة عربية',
+      worksFor: {
+        '@type': 'EducationalOrganization',
+        name: 'منصة الوتين التعليمية'
+      }
+    },
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'أشمون' },
+      { '@type': 'AdministrativeArea', name: 'المنوفية' },
+      { '@type': 'Country', name: 'مصر' }
+    ],
+    sameAs: ['https://wa.me/201010407906'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'المناهج والأدوات التعليمية',
       itemListElement: [
-        { '@type': 'Course', name: 'تأسيس اللغة العربية', educationalLevel: 'رياض الأطفال والابتدائي' },
-        { '@type': 'Course', name: 'منهج اللغة العربية التفاعلي', educationalLevel: 'إعدادي وثانوي' },
-        { '@type': 'SoftwareApplication', name: 'نظام البث المباشر (اللايف)', applicationCategory: 'EducationalApplication' },
-        { '@type': 'SoftwareApplication', name: 'أدوات المعلمين والسبورة الذكية', applicationCategory: 'EducationalApplication' }
+        { '@type': 'Course', name: 'تأسيس اللغة العربية والقراءة والكتابة', educationalLevel: 'المرحلة الابتدائية ورياض الأطفال' },
+        { '@type': 'Course', name: 'منهج اللغة العربية للشهادة الإعدادية والثانوية (عام وأزهر)', educationalLevel: 'المرحلة الإعدادية والثانوية' },
+        { '@type': 'SoftwareApplication', name: 'نظام الفصول الافتراضية والبث المباشر', applicationCategory: 'EducationalApplication' },
+        { '@type': 'SoftwareApplication', name: 'السبورة التفاعلية الذكية وأدوات المعلمين', applicationCategory: 'EducationalApplication' }
       ]
     }
   }

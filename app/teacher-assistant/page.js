@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import AssistantsTab from '../components/TeacherAssistant/AssistantsTab'
 import TeacherGameManagerModal from '../components/TeacherGameManagerModal'
 import ExamBuilderTab from '../admin-dashboard/components/ExamBuilderTab'
@@ -1664,7 +1664,7 @@ export default function TeacherDashboard() {
                     رصيد دائم لا تنتهي صلاحيته: باقة 100 كريديت (15 ج) • باقة 300 كريديت (35 ج)
                   </p>
                   <a
-                    href={`https://wa.me/201507952002?text=${encodeURIComponent(`مرحباً، أرغب في شحن باقة رصيد ذكاء اصطناعي (AI Credits) لحسابي كمعلم:\nالاسم: ${teacher.name}\nرقم الهاتف: ${teacher.phone}`)}`}
+                    href={`https://wa.me/201010407906?text=${encodeURIComponent(`مرحباً، أرغب في شحن باقة رصيد ذكاء اصطناعي (AI Credits) لحسابي كمعلم:\nالاسم: ${teacher.name}\nرقم الهاتف: ${teacher.phone}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

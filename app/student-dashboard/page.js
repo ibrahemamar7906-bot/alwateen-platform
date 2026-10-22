@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -555,7 +555,7 @@ export default function StudentDashboard() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
               <a 
-                href="https://wa.me/201507952002" 
+                href="https://wa.me/201010407906" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{

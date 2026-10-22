@@ -1,4 +1,4 @@
-﻿import Footer from '../components/Footer'
+import Footer from '../components/Footer'
 import { Mail, Phone, MapPin, Sparkles } from 'lucide-react'
 
 export default function ContactPage() {
@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <Phone color="white" size={28} />
               </div>
               <h3 style={{ marginBottom: '10px', color: '#0f172a', fontWeight: '800' }}>الهاتف (اتصال وواتساب)</h3>
-              <a href="tel:+201507952002" style={{ color: '#059669', direction: 'ltr', display: 'inline-block', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem' }}>+20 150 795 2002</a>
+              <a href="tel:+201010407906" style={{ color: '#059669', direction: 'ltr', display: 'inline-block', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem' }}>+20 101 040 7906</a>
             </div>
 
             <div style={{
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 <MapPin color="white" size={28} />
               </div>
               <h3 style={{ marginBottom: '10px', color: '#0f172a', fontWeight: '800' }}>العنوان</h3>
-              <p style={{ color: '#475569', fontSize: '1.1rem', fontWeight: '600' }}>المنوفية - شبين الكوم</p>
+              <p style={{ color: '#475569', fontSize: '1.1rem', fontWeight: '600' }}>المنوفية - أشمون</p>
             </div>
           </div>
         </div>

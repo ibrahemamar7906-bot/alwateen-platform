@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -353,7 +353,7 @@ export default function ParentDashboard() {
 
                         {/* Contact Teacher */}
                         <a 
-                          href={`https://wa.me/201507952002?text=مرحباً أ. إبراهيم عمار، أنا ولي أمر الطالب (${child.full_name}) وأود الاستفسار عن مستواه في المنصة.`}
+                          href={`https://wa.me/201010407906?text=مرحباً أ. إبراهيم عمار، أنا ولي أمر الطالب (${child.full_name}) وأود الاستفسار عن مستواه في المنصة.`}
                           target="_blank" 
                           rel="noopener noreferrer"
                           style={{
